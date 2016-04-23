@@ -43,7 +43,7 @@ public partial class User_Parking_Prise : System.Web.UI.Page
     }
     protected void DropDownList1_DataBound(object sender, EventArgs e)
     {
-        DropDownList1.Items.Insert(0,"---Select Parking Name-");
+        DropDownList1.Items.Insert(0,"---Select Parking Name--");
     }
     protected void DropDownList2_DataBound(object sender, EventArgs e)
     {
@@ -51,14 +51,24 @@ public partial class User_Parking_Prise : System.Web.UI.Page
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
-        if (Label2.Text == "")
+        if (sconn.State == ConnectionState.Open)
         {
-            if (sconn.State == ConnectionState.Open)
-            {
-                sconn.Close();
-            }
-            sconn.Open();
-            SqlCommand cmd = new SqlCommand("insert into Admin_Parking_Rate(Pcode,Rate,Vehical_Type_Id,Vehical_Type_Name,Default_Date,Time,Time_id) values(@Pcode,@Rate,@Vehical_Type_Id,@Vehical_Type_Name,@Default_Date,@Time,@Time_id)", sconn);
+            sconn.Close();
+        }
+        sconn.Open();
+
+        SqlCommand cmd1 = new SqlCommand("Select * from Admin_Parking_Rate1 where Pcode=@Pcode", sconn);
+        cmd1.Parameters.AddWithValue("@Pcode", DropDownList1.SelectedValue.ToString());
+        SqlDataReader dr = cmd1.ExecuteReader();
+        DataTable dt = new DataTable();
+        dt.Load(dr);
+        //if (dt.Rows.Count == 1)
+
+        if (dt.Rows.Count>0)
+        {
+
+            SqlCommand cmd = new SqlCommand("update Admin_Parking_Rate1 Set Rate=@Rate,Vehical_Type_Id=@Vehical_Type_Id,Vehical_Type_Name=@Vehical_Type_Name,Time=@Time,Time_id=@Time_id Where Pcode=@Pcode", sconn);
+            //cmd.Parameters.AddWithValue("@Id",Label2.Text);
             cmd.Parameters.AddWithValue("@Pcode", DropDownList1.SelectedValue.ToString());
             cmd.Parameters.AddWithValue("@Rate", Txtrate.Text);
             cmd.Parameters.AddWithValue("@Vehical_Type_Id", DropDownList2.SelectedValue.ToString());
@@ -67,19 +77,14 @@ public partial class User_Parking_Prise : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Time", DropDownList3.SelectedItem.ToString());
             cmd.Parameters.AddWithValue("@Time_id", DropDownList3.SelectedValue.ToString());
             cmd.ExecuteNonQuery();
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Add Price Successfully')", true);
+            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Price Updated Successfully')", true);
             GridView1.DataBind();
             Txtrate.Text = "";
         }
         else
         {
-            if (sconn.State == ConnectionState.Open)
-            {
-                sconn.Close();
-            }
-            sconn.Open();
-            SqlCommand cmd = new SqlCommand("update Admin_Parking_Rate Set Pcode=@Pcode,Rate=@Rate,Vehical_Type_Id=@Vehical_Type_Id,Vehical_Type_Name=@Vehical_Type_Name,Time=@Time,Time_id=@Time_id Where Id=@Id", sconn);
-            cmd.Parameters.AddWithValue("@Id",Label2.Text);
+
+            SqlCommand cmd = new SqlCommand("insert into Admin_Parking_Rate1(Pcode,Rate,Vehical_Type_Id,Vehical_Type_Name,Default_Date,Time,Time_id) values(@Pcode,@Rate,@Vehical_Type_Id,@Vehical_Type_Name,@Default_Date,@Time,@Time_id)", sconn);
             cmd.Parameters.AddWithValue("@Pcode", DropDownList1.SelectedValue.ToString());
             cmd.Parameters.AddWithValue("@Rate", Txtrate.Text);
             cmd.Parameters.AddWithValue("@Vehical_Type_Id", DropDownList2.SelectedValue.ToString());
@@ -88,10 +93,10 @@ public partial class User_Parking_Prise : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Time", DropDownList3.SelectedItem.ToString());
             cmd.Parameters.AddWithValue("@Time_id", DropDownList3.SelectedValue.ToString());
             cmd.ExecuteNonQuery();
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Update Price Successfully')", true);
+            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Price Added Successfully')", true);
             GridView1.DataBind();
             Txtrate.Text = "";
-            Label2.Text = "";
+
         }
 
     }
@@ -120,7 +125,7 @@ public partial class User_Parking_Prise : System.Web.UI.Page
                 sconn.Close();
             }
             sconn.Open();
-            SqlCommand cmd = new SqlCommand("Select * from Admin_Parking_Rate where Id=@Id", sconn);
+            SqlCommand cmd = new SqlCommand("Select * from Admin_Parking_Rate1 where Id=@Id", sconn);
             cmd.Parameters.AddWithValue("Id", abcds);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable dt = new DataTable();

@@ -44,109 +44,118 @@ public partial class User_ParkingMyLockup : System.Web.UI.Page
     }
     protected void jack(object sender, EventArgs e)
     {
-        string input = txtSearch.Text;
-
-        string[] data = txtSearch.Text.Split(',');
-        if (data.Length == 3)
-        {
-            city = data[0];
-            state = data[1];
-            country = data[2];
-            //  Session["areaa"] = area.Trim();
-            Session["cityy"] = city.Trim();
-            Session["statee"] = state.Trim();
-            Session["countyrr"] = country.Trim();
-            abbb = city + ", " + state + ", " + country;
-            Session["abbb"] = abbb;
-        }
-        else if (data.Length == 4)
-        {
-            city = data[1];
-            state = data[2];
-            country = data[3];
-          //  Session["areaa"] = area.Trim();
-            Session["cityy"] = city.Trim();
-            Session["statee"] = state.Trim();
-            Session["countyrr"] = country.Trim();
-            abbb = city + ", " + state + ", " + country;
-            Session["abbb"] = abbb;
-        }
-        else if (data.Length == 5)
-        {
-            city = data[2];
-            state = data[3];
-            country = data[4];
-          //  Session["areaa"] = area.Trim();
-            Session["cityy"] = city.Trim();
-            Session["statee"] = state.Trim();
-            Session["countyrr"] = country.Trim();
-            abbb = city + ", " + state + ", " + country;
-            Session["abbb"] = abbb;
-        }
-        else if (data.Length == 6)
-        {
-            city = data[3];
-            state = data[4];
-            country = data[5];
-           // Session["areaa"] = area.Trim();
-            Session["cityy"] = city.Trim();
-            Session["statee"] = state.Trim();
-            Session["countyrr"] = country.Trim();
-            abbb = city + ", " + state + ", " + country;
-            Session["abbb"] = abbb;
-        }
-        else if (data.Length == 7)
-        {
-            city = data[4];
-            state = data[5];
-            country = data[6];
-            // Session["areaa"] = area.Trim();
-            Session["cityy"] = city.Trim();
-            Session["statee"] = state.Trim();
-            Session["countyrr"] = country.Trim();
-            abbb = city + ", " + state + ", " + country;
-            Session["abbb"] = abbb;
-        }
-        else
-        {
-
-        }
-        mk();
-
+        Session["km"] = "0";
+        Session["time"] = "0";
         Session["areaa"] = txtSearch.Text;
         Session["lat"] = txtLat.Text.Trim();
         Session["long"] = txtLng.Text.Trim();
-        Button1.Visible = false;
-        Panel1.Visible = true;
+        Response.Redirect("Parking_Spaces.aspx");
     }
-    private void mk()
-    {
-        string abcd = Session["abbb"].ToString();
+    //protected void jack(object sender, EventArgs e)
+    //{
+    //    string input = txtSearch.Text;
 
-        var request = WebRequest.Create("https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + abcd + "&destinations=" + txtSearch.Text + "");
-        // Indicate you are looking for a JSON response
-        request.ContentType = "application/json; charset=utf-8";
-        var response = (HttpWebResponse)request.GetResponse();
+    //    string[] data = txtSearch.Text.Split(',');
+    //    if (data.Length == 3)
+    //    {
+    //        city = data[0];
+    //        state = data[1];
+    //        country = data[2];
+    //        //  Session["areaa"] = area.Trim();
+    //        Session["cityy"] = city.Trim();
+    //        Session["statee"] = state.Trim();
+    //        Session["countyrr"] = country.Trim();
+    //        abbb = city + ", " + state + ", " + country;
+    //        Session["abbb"] = abbb;
+    //    }
+    //    else if (data.Length == 4)
+    //    {
+    //        city = data[1];
+    //        state = data[2];
+    //        country = data[3];
+    //      //  Session["areaa"] = area.Trim();
+    //        Session["cityy"] = city.Trim();
+    //        Session["statee"] = state.Trim();
+    //        Session["countyrr"] = country.Trim();
+    //        abbb = city + ", " + state + ", " + country;
+    //        Session["abbb"] = abbb;
+    //    }
+    //    else if (data.Length == 5)
+    //    {
+    //        city = data[2];
+    //        state = data[3];
+    //        country = data[4];
+    //      //  Session["areaa"] = area.Trim();
+    //        Session["cityy"] = city.Trim();
+    //        Session["statee"] = state.Trim();
+    //        Session["countyrr"] = country.Trim();
+    //        abbb = city + ", " + state + ", " + country;
+    //        Session["abbb"] = abbb;
+    //    }
+    //    else if (data.Length == 6)
+    //    {
+    //        city = data[3];
+    //        state = data[4];
+    //        country = data[5];
+    //       // Session["areaa"] = area.Trim();
+    //        Session["cityy"] = city.Trim();
+    //        Session["statee"] = state.Trim();
+    //        Session["countyrr"] = country.Trim();
+    //        abbb = city + ", " + state + ", " + country;
+    //        Session["abbb"] = abbb;
+    //    }
+    //    else if (data.Length == 7)
+    //    {
+    //        city = data[4];
+    //        state = data[5];
+    //        country = data[6];
+    //        // Session["areaa"] = area.Trim();
+    //        Session["cityy"] = city.Trim();
+    //        Session["statee"] = state.Trim();
+    //        Session["countyrr"] = country.Trim();
+    //        abbb = city + ", " + state + ", " + country;
+    //        Session["abbb"] = abbb;
+    //    }
+    //    else
+    //    {
 
-        // Read through the response
-        using (var sr = new StreamReader(response.GetResponseStream()))
-        {
-            // Define a serializer to read your response
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+    //    }
+    //    mk();
 
-            // Get your results
-            dynamic result = serializer.DeserializeObject(sr.ReadToEnd());
+    //    Session["areaa"] = txtSearch.Text;
+    //    Session["lat"] = txtLat.Text.Trim();
+    //    Session["long"] = txtLng.Text.Trim();
+    //    Button1.Visible = false;
+    //    Panel1.Visible = true;
+    //}
+    //private void mk()
+    //{
+    //    string abcd = Session["abbb"].ToString();
 
-            // Read the distance property from the JSON request
-            var distance = result["rows"][0]["elements"][0]["distance"]["text"]; // yields "1,300 KM" 
-            var duration = result["rows"][0]["elements"][0]["duration"]["text"];
-            string output = distance.Replace("km", " ");
-            lblduratio.Text = duration;
-            lbldistant.Text = output;
-            Session["km"] = lbldistant.Text;
-            Session["time"] = lblduratio.Text;         
-        }
-    }
+    //    var request = WebRequest.Create("https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + abcd + "&destinations=" + txtSearch.Text + "");
+    //    // Indicate you are looking for a JSON response
+    //    request.ContentType = "application/json; charset=utf-8";
+    //    var response = (HttpWebResponse)request.GetResponse();
+
+    //    // Read through the response
+    //    using (var sr = new StreamReader(response.GetResponseStream()))
+    //    {
+    //        // Define a serializer to read your response
+    //        JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+    //        // Get your results
+    //        dynamic result = serializer.DeserializeObject(sr.ReadToEnd());
+
+    //        // Read the distance property from the JSON request
+    //        var distance = result["rows"][0]["elements"][0]["distance"]["text"]; // yields "1,300 KM" 
+    //        var duration = result["rows"][0]["elements"][0]["duration"]["text"];
+    //        string output = distance.Replace("km", " ");
+    //        lblduratio.Text = duration;
+    //        lbldistant.Text = output;
+    //        Session["km"] = lbldistant.Text;
+    //        Session["time"] = lblduratio.Text;         
+    //    }
+    //}
     private void Page_Error(object sender, EventArgs e)
     {
         // Get last error from the server

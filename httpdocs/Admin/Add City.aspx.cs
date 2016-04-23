@@ -31,7 +31,7 @@ public partial class Admin_Add_City : System.Web.UI.Page
         da1.Fill(dt1);
         if (dt1.Rows.Count > 0)
         {
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('City Alredy Exit')", true);
+            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('City Already Exit')", true);
 
         }
         else

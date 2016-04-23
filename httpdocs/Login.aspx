@@ -150,7 +150,7 @@
                                           <asp:Button ID="Button16" runat="server" Text="Finish" ValidationGroup="jacks"
                                             style="margin-top: 19px;font-size: larger;width: 200px;color: white;border-radius: 7px;padding: 7px;background-color: #00d999;" 
                                                 class="btn form-btn btn-lg btn-block" onclick="Button5_Clickfirstverify"/>
-                                                 <asp:Button ID="Button17" runat="server" Text="Cancle"
+                                                 <asp:Button ID="Button17" runat="server" Text="Cancel"
                                             style="margin-top: 19px;font-size: larger;width: 200px;color: white;border-radius: 7px;padding: 7px;background-color: #00d999;" 
                                                 class="btn form-btn btn-lg btn-block" onclick="Button5_Clickfirstcancel"/>
                                      <br />

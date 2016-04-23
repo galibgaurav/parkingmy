@@ -48,7 +48,7 @@
         <!-- page heading-->
         <h3 >
             
-            <div style="display=inline-block";>
+            <div style="display:inline-block";>
                 <asp:Button ID="Button3" runat="server" 
                     style="font-size: larger;color: white;border-radius: 0px;padding: 7px;background-color: #00d999;"  
                     Text="Add Space" onclick="Button3_Click" />
@@ -60,10 +60,7 @@
                  <asp:Button ID="Button4" runat="server" 
                     style="font-size: larger;color: white;border-radius: 0px;padding: 7px;background-color: #00d999;"   
                     Text="All Space" onclick="Button4_Click" />
-				 
-            
-               
-   </div>
+				 </div>
    
         </h3>
         <asp:Label ID="Label4" Visible="false" runat="server" Text=""></asp:Label>
@@ -198,7 +195,7 @@
                     <div class="box-authentication">
                     <label for="emmail_register">All space</label>
                         
-                   <div style="overflow-x:scroll; width:1200x;">
+                   <div style="overflow-x:scroll; width:120px;">
                         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
                             AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" 
                             DataSourceID="SqlDataSource6" ForeColor="#333333" GridLines="None" 
@@ -445,13 +442,11 @@
                        
                        
                                               
-<asp:SqlDataSource ID="SqlDataSource222" runat="server" 
-                            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                        <asp:SqlDataSource ID="SqlDataSource222" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
                             
                             SelectCommand="SELECT [Parking_Name], [Parking_Id] FROM [Admin_Rent_Space] WHERE ([Uniq_Id] = @Uniq_Id)">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="Label3" DefaultValue="" Name="Uniq_Id" 
-                                    PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="Label3" DefaultValue="" Name="Uniq_Id" PropertyName="Text" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                         <asp:Label ID="Label2" runat="server" Visible="false"  Text=""></asp:Label>

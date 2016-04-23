@@ -31,7 +31,7 @@ public partial class Admin_Add_State : System.Web.UI.Page
         da1.Fill(dt1);
         if (dt1.Rows.Count > 0)
         {
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('State Alredy Exit')", true);
+            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('State Already Exit')", true);
 
         }
         else

@@ -50,6 +50,20 @@ namespace ParkingMy.Logic
             }
             sw.Close();
         }
+        public static void Loginfo(string infomsg)
+        {
+            // Include logic for logging exceptions
+            // Get the absolute path to the log file
+            string logFile = "~/App_Data/InfoLog.txt";
+            logFile = HttpContext.Current.Server.MapPath(logFile);
+
+            // Open the log file for append and write the log
+            StreamWriter sw = new StreamWriter(logFile, true);
+            //sw.WriteLine("********** {0} **********", DateTime.Now);
+            sw.WriteLine(infomsg);
+            sw.Close();
+        }
+       
         // Notify System Operators about an exception 
         public static void NotifySystemOps(Exception exc)
         {

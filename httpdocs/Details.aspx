@@ -54,8 +54,8 @@ hr
                     <div class="blog-title">
                       <h2 style="display: inline-block;"><asp:Label ID="Label2" runat="server" Text=""></asp:Label></h2>
                         <asp:Button ID="Button1" runat="server" 
-                            style="float: right;background-color: #C71616;background-color: C71616;color: white;padding: 15px;border-radius: 15px;" 
-                            Text="Booking Now" onclick="Button1_Click"></asp:Button>
+                            style="float: right;background-color: #C71616;background-color: #C71616;color: white;padding: 15px;border-radius: 15px;" 
+                            Text="Book Now" onclick="Button1_Click"></asp:Button>
                       <p>Property Type <a href="#" class="blog-admin"><asp:Label ID="Label3" runat="server" Text=""></asp:Label></a> </p>
                     </div>
                     <figure>
@@ -131,22 +131,24 @@ hr
                     <h2>Follow us on</h2>
                     <div class="follow-us">
                       <a class="facebook" href="https://www.facebook.com/parkingmy/" target="_blank" ><span class="fa fa-facebook" style="line-height: 35px;"></span></a>
-                  <a class="twitter" href="https://twitter.com/ParkingMyCom"target="_blank"  ><span class="fa fa-twitter" style="line-height: 47px;"></span></a>
-                <a class="google-plus" href="https://plus.google.com/109417580993695308682" target="_blank" ><span class="fa fa-google-plus" style="line-height: 47px;"></span></a>
-
-                    </div>
+                      <a class="twitter" href="https://twitter.com/ParkingMyCom"target="_blank"  ><span class="fa fa-twitter" style="line-height: 35px;"></span></a>
+                      <a class="google-plus" href="https://plus.google.com/109417580993695308682" target="_blank" ><span class="fa fa-google-plus" style="line-height: 35px;"></span></a>
+                   </div>
                   </div>
                    <div class="single-widget">
-                    <h2>Asq a question for park</h2>
+                    <h2>Ask a question for park</h2>
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                        <ContentTemplate>
+                    <ContentTemplate>
                     <div class="follow-us" >
                     
-                  <asp:Button ID="Button2" runat="server" 
+               <%--   <asp:Button ID="Button2" runat="server" 
                             style="font-size: larger;color: white;border-radius: 0px;padding: 7px;background-color: #00d999;" 
-                            Text="Asq a question for park" onclick="Button2_Click"></asp:Button>
+                            Text="Ask" onclick="Button2_Click"></asp:Button>--%>
+                        <%-- <asp:Button ID="Button2" runat="server" 
+                            style="float:none;background-color: #C71616;background-color: #C71616;color: white;padding: 15px;border-radius: 15px;"
+                            Text="Ask" onclick="Button2_Click"></asp:Button>--%>
 
-                  <asp:Panel ID="Panel1" Visible="false" runat="server" style="margin-top: 20px;background-color: #F8F8F8;" >
+                  <asp:Panel ID="Panel1" runat="server" style="margin-top: 20px;background-color: #F8F8F8;" >
                       
                         <label for="emmail_register"></label>
                    <asp:TextBox ID="txtname" runat="server" class="form-control" placeholder=" Your Name" style="margin-top: 12px;margin-left: 14px;width: 90%;"></asp:TextBox>
@@ -186,9 +188,9 @@ hr
                       <asp:Button ID="Button3" runat="server" Text="Send Message" 
                             style="height: 37px;color: white;background-color: #C71616; margin-top: 6px;margin-bottom: 17px;" 
                             ValidationGroup="abcccc" onclick="Button3_Click"></asp:Button>
-                                                  <asp:Button ID="Button4" runat="server" 
+                                                  <%--<asp:Button ID="Button4" runat="server" 
                             style="height: 37px;color: white;background-color: #C71616; margin-top: 6px;margin-bottom: 17px;" 
-                            Text="Cancel" onclick="Button4_Click" ></asp:Button>
+                            Text="Cancel" onclick="Button4_Click" ></asp:Button>--%>
                <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="abcccc" runat="server" ShowMessageBox="True" ShowSummary="False" />
                   </asp:Panel>
 
@@ -211,7 +213,7 @@ hr
                   <!-- End Sidebar Single widget -->
                   <!-- Start Sidebar Single widget -->
                   <div class="single-widget">
-                    <h2>Other Parking</h2>
+                    <h2>Other parking</h2>
                     <div class="popular-post-widget">
 
                     <asp:Repeater ID="DataList1" runat="server" >
@@ -242,7 +244,7 @@ hr
                         </asp:Repeater>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                            SelectCommand="SELECT top[5] [Parking_Name], [Address], [Parking_Id], [Discription] FROM [Admin_Rent_Space] WHERE ([City_Id] = @City_Id)">
+                            SelectCommand="SELECT top 5   [Parking_Name], [Address], [Parking_Id], [Discription] FROM [Admin_Rent_Space] ">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="Label4" Name="City_Id" PropertyName="Text" 
                                     Type="Int64" />
@@ -270,7 +272,7 @@ hr
         <div class="col-md-12">
           <div class="portfolio-area">
             <div class="title-area">
-              <h2 class="tittle"><asp:Label ID="Label16" runat="server" Text=""></asp:Label> Photose</h2>
+              <h2 class="tittle"><asp:Label ID="Label16" runat="server" Text=""></asp:Label> Parking Space</h2>
               <span class="tittle-line"></span>
              
             </div>
@@ -308,5 +310,7 @@ hr
   </section>
 
   </asp:Panel>
+   
 </asp:Content>
+ 
 

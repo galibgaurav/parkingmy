@@ -62,8 +62,8 @@
                             <label for="emmail_register">Time</label>
                             <asp:DropDownList ID="DropDownList3" class="form-control " runat="server" 
                                     >
-                                <asp:ListItem Value="0">---Select Hour---</asp:ListItem>
-                             <%--   <asp:ListItem Value="1">1 Hours</asp:ListItem>--%>
+                                <asp:ListItem Value="0">---Select Parking Duration---</asp:ListItem>
+                                <asp:ListItem Value="1">1 Hour</asp:ListItem>
                                 <asp:ListItem Value="2">1 Day</asp:ListItem>
                                 <%--  <asp:ListItem Value="3">1 Week</asp:ListItem>
                                    <asp:ListItem Value="4">1 Month</asp:ListItem>--%>
@@ -151,10 +151,10 @@
                         </asp:GridView>
                         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
                             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                            DeleteCommand="DELETE FROM [Admin_Parking_Rate] WHERE [Id] = @Id" 
-                            InsertCommand="INSERT INTO [Admin_Parking_Rate] ([Pcode], [Rate], [Vehical_Type_Id], [Vehical_Type_Name], [Default_Date], [Time], [Time_id]) VALUES (@Pcode, @Rate, @Vehical_Type_Id, @Vehical_Type_Name, @Default_Date, @Time, @Time_id)" 
-                            SelectCommand="SELECT * FROM [Admin_Parking_Rate] WHERE ([Pcode] = @Pcode)" 
-                            UpdateCommand="UPDATE [Admin_Parking_Rate] SET [Pcode] = @Pcode, [Rate] = @Rate, [Vehical_Type_Id] = @Vehical_Type_Id, [Vehical_Type_Name] = @Vehical_Type_Name, [Default_Date] = @Default_Date, [Time] = @Time, [Time_id] = @Time_id WHERE [Id] = @Id">
+                            DeleteCommand="DELETE FROM [Admin_Parking_Rate1] WHERE [Id] = @Id" 
+                            InsertCommand="INSERT INTO [Admin_Parking_Rate1] ([Pcode], [Rate], [Vehical_Type_Id], [Vehical_Type_Name], [Default_Date], [Time], [Time_id]) VALUES (@Pcode, @Rate, @Vehical_Type_Id, @Vehical_Type_Name, @Default_Date, @Time, @Time_id)" 
+                            SelectCommand="SELECT * FROM [Admin_Parking_Rate1] WHERE ([Pcode] = @Pcode)" 
+                            UpdateCommand="UPDATE [Admin_Parking_Rate1] SET [Pcode] = @Pcode, [Rate] = @Rate, [Vehical_Type_Id] = @Vehical_Type_Id, [Vehical_Type_Name] = @Vehical_Type_Name, [Default_Date] = @Default_Date, [Time] = @Time, [Time_id] = @Time_id WHERE [Id] = @Id">
                             <DeleteParameters>
                                 <asp:Parameter Name="Id" Type="Int64" />
                             </DeleteParameters>

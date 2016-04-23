@@ -384,7 +384,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@Parking_Name", DropDownList1.SelectedItem.ToString());
                 cmd.ExecuteNonQuery();
                 GridView2.DataBind();
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Insert Successfull ');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Upload Successful ');", true);
                 Label5.Text = "";
             }
             else
@@ -412,7 +412,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
                
                 cmd.ExecuteNonQuery();
 
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Update Successfull ');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Update Successful ');", true);
                 GridView2.DataBind();
                 Label5.Text = "";
             }

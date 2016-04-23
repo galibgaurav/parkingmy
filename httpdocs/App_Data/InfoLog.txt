@@ -1,0 +1,20 @@
+********** 4/16/2016 7:36:56 PM **********
+********** 4/16/2016 7:36:57 PM **********
+********** 4/16/2016 7:36:57 PM **********
+********** 4/16/2016 7:36:57 PM **********
+********** 4/16/2016 7:36:58 PM **********
+********** 4/16/2016 11:11:59 PM **********
+path for image ../Gallery/U29360336ParkingMy.jpg
+********** 4/16/2016 11:11:59 PM **********
+going to run Admin_Login sql
+********** 4/16/2016 11:12:00 PM **********
+ran Admin_Login sql successful
+********** 4/16/2016 11:12:00 PM **********
+going to set Admin_Login sql
+********** 4/16/2016 11:12:00 PM **********
+going to set Admin_Login sql successful
+********** 4/16/2016 11:12:43 PM **********
+path for image ../Gallery/U29360336
+path for image C:\Users\e593544\Downloads\parkingmycode\httpdocs\Gallery\U29360336
+path for image C:\Users\e593544\Downloads\parkingmycode\httpdocs\Gallery\U29360336
+path for image C:\Users\e593544\Downloads\parkingmycode\httpdocs\Gallery\U29360336

@@ -46,26 +46,26 @@
         </div>
         <!-- ./breadcrumb -->
         <!-- page heading-->
-        <h3 >
-            
-            <div style="display=inline-block";>
+      <%--  <h3 >
+            --%>
+            <div style="display:inline-block";>
                 <asp:Button ID="Button3" runat="server" 
-                    style="font-size: larger;color: white;border-radius: 0px;padding: 7px;background-color: #00d999;"  
+                    style="font-size: larger;border-radius: 0px;padding: 7px;background-color: #00d999;"  
                     Text="Add Space" onclick="Button3_Click" />
 
                     <asp:Button ID="Button1" runat="server" 
-                    style="font-size: larger;color: white;border-radius: 0px;padding: 7px;background-color: #00d999;"   
+                    style="font-size: larger;border-radius: 0px;padding: 7px;background-color: #00d999;"   
                     Text="Parking Image" onclick="Button1_Click" />
 				
                  <asp:Button ID="Button4" runat="server" 
-                    style="font-size: larger;color: white;border-radius: 0px;padding: 7px;background-color: #00d999;"   
+                    style="font-size: larger;border-radius: 0px;padding: 7px;background-color: #00d999;"   
                     Text="All Space" onclick="Button4_Click" />
 				 
             
                
    </div>
    
-        </h3>
+        <%--</h3>--%>
         <asp:Label ID="Label4" Visible="false" runat="server" Text=""></asp:Label>
         <asp:Panel ID="Panel1" runat="server">
        
@@ -74,52 +74,54 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="box-authentication">
-
-                       <label for="emmail_register">Lock Up Your Location</label><br />
+                       <h2 style="background-color: #00d999;font-size: larger;">Step 1. Locate Your Parking Space*</h2><br />
+                       <%--<label for="emmail_register">Lock Up Your Location</label><br />--%>
                         <asp:LinkButton ID="LinkButton3" PostBackUrl="~/User/ParkingMyLockup.aspx" 
-                            runat="server" Font-Bold="True" ForeColor="#00CC99">Lockup Now</asp:LinkButton>
+                            runat="server" Font-Bold="True" ForeColor="#00CC99" Font-Underline="True"><span><img alt="click" src="../assets/images/address.png"/>Lockup Now</span></asp:LinkButton>
+                       <%-- <asp:Button ID="LinkButton3" runat="server" PostBackUrl="~/User/ParkingMyLockup.aspx" Font-Bold="True" ForeColor="#00CC99" Text="Lockup Now"></asp:Button>--%>
+                        <br />
+                       
+                       <asp:label ID="Label6" runat="server" CssClass="label" style="display : inline;text-align: left;color:#3A3737;font-weight:inherit;font-size:medium">Selected longitude : </asp:label>
+                          <asp:TextBox CssClass="textbox" ID="lngBox" runat="server" style="display : inline;text-align: left;"></asp:TextBox>
+                          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please lockup your parking space" ControlToValidate="lngBox"  ValidationGroup="ab" Display="None"></asp:RequiredFieldValidator>
+                        <br />
 
-                        <br />  <br />
+                          <asp:label ID="Label7" CssClass="label" runat="server" style="display : inline;text-align: left;color:#3A3737;font-weight:normal;font-size:medium">Selected latitude  : </asp:label>
+                          <asp:TextBox CssClass="textbox" ID="latBox" runat="server" style="display : inline;text-align: left;"></asp:TextBox>
+                          <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Please lockup your parking space" ControlToValidate="latBox"  ValidationGroup="ab" Display="None"></asp:RequiredFieldValidator>
+<br />
+                        <br />
 
-
-                    <label for="emmail_register">Parking Name</label>
-                        <asp:TextBox ID="TextBox1" placeholder="Name to identify your spaces. Example:CarParkSpace1" runat="server" class="form-control " ></asp:TextBox>
-                   
-                       <label for="emmail_register">Type&nbsp; of space</label>
+                    <h2 style="background-color: #00d999;font-size: larger;">Step 2. Add Parking Space Details</h2>
+                        <label for="emmail_register">Parking Name*</label>
+                        <asp:TextBox ID="TextBox1" placeholder="Name to identify your spaces. Example: CarParkSpace1" runat="server" class="form-control " ></asp:TextBox>
+                        <asp:RequiredFieldValidator runat="server" ErrorMessage="Please enter parking name" ControlToValidate="TextBox1"  ValidationGroup="ab" Display="None"></asp:RequiredFieldValidator>
+                       <label for="emmail_register">Type&nbsp; of space*</label>
             
-                   
                         <asp:DropDownList ID="DropDownList3" runat="server" 
                             DataSourceID="SqlDataSource1" class="form-control "  DataTextField="Space" 
                             DataValueField="Id" ondatabound="DropDownList3_DataBound">
                         </asp:DropDownList>                    
-
-                       
-                       
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
                             SelectCommand="SELECT * FROM [Admin_Space]"></asp:SqlDataSource>
-
-                       
-                       <label for="emmail_register">Type of property</label>
-            
-                   
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDownList3" InitialValue="" ValidationGroup="ab" ErrorMessage="Please select type of space"  Display="None"></asp:RequiredFieldValidator>
+                        
+                        <label for="emmail_register">Type of property*</label>
+                        
                         <asp:DropDownList ID="DropDownList4" runat="server" 
                           class="form-control " DataSourceID="SqlDataSource4" DataTextField="Proparty" 
                             DataValueField="Id" ondatabound="DropDownList4_DataBound" 
-                            onselectedindexchanged="DropDownList4_SelectedIndexChanged"  >
+                            onselectedindexchanged="DropDownList4_SelectedIndexChanged">
                         </asp:DropDownList>                    
 
                    
                         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
                             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
                             SelectCommand="SELECT * FROM [Admin_Proprty]"></asp:SqlDataSource>
-
-                      
-
-                       
-                       
-                        <label for="emmail_register">State</label>
-                                        <asp:TextBox ID="txtstate" class="form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DropDownList4" InitialValue="" ValidationGroup="ab" ErrorMessage="Please select type of property"  Display="None"></asp:RequiredFieldValidator>
+                        <label for="emmail_register">State*</label>
+                        <asp:TextBox ID="txtstate" class="form-control" runat="server" placeholder="Example: karnataka"></asp:TextBox>
 
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                                                 ErrorMessage="Enter State" ControlToValidate="txtstate" 
@@ -128,16 +130,16 @@
                                             
 
 
-                        <label for="emmail_register">City</label>
+                        <label for="emmail_register">City*</label>
             
-                                       <asp:TextBox ID="txtcity" class="form-control" runat="server"></asp:TextBox>
+                                       <asp:TextBox ID="txtcity" class="form-control" runat="server" placeholder="Example: Bangalore"></asp:TextBox>
 
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                                 ErrorMessage="Enter City" ControlToValidate="txtcity" 
                                                 ValidationGroup="ab" Display="None"></asp:RequiredFieldValidator>
 
-                       <label for="emmail_register">Area</label>
-                        <asp:TextBox ID="txtarea" class="form-control" runat="server"></asp:TextBox>
+                       <label for="emmail_register">Area*</label> 
+                        <asp:TextBox ID="txtarea" class="form-control" runat="server" placeholder="Example: Whitefield"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                                 ErrorMessage="Enter Area" ControlToValidate="txtarea" 
                                                 ValidationGroup="ab" Display="None"></asp:RequiredFieldValidator>
@@ -146,35 +148,29 @@
                         <asp:TextBox ID="txtaddress" runat="server" class="form-control " Rows="2" 
                             TextMode="MultiLine"></asp:TextBox>
 
-
-
-                                                 <label for="emmail_register">Postal Code</label>
+                            <label for="emmail_register">Postal Code</label>
                         <asp:TextBox ID="txtpostalcode" runat="server" placeholder="Example: 000000" class="form-control "></asp:TextBox>
 
                         
                               
                         
-                                  <label for="emmail_register">Facilities</label>
+                                  <label for="emmail_register">Facilities (Example: 24/7 security, video surveillance, daily cleaning etc.)</label>
                                 <cc1:Editor ID="Editor2" runat="server" />
 
                     </div>
                 </div>
                    <div class="col-sm-6">
                     <div class="box-authentication">
-                                      <label for="emmail_register">Available Space</label>
-                        <asp:TextBox ID="txtavailablespace" placeholder="Example: 100" runat="server" class="form-control "></asp:TextBox>
+                                      <label for="emmail_register">Number of Available Parking Space</label>
+                        <asp:TextBox ID="txtavailablespace" placeholder="Example: 5" runat="server" class="form-control "></asp:TextBox>
 
                         
-                                                <label for="emmail_register">Parking Size</label>
-                        <asp:TextBox ID="txtparkingsize" placeholder="Example: 12345 sqft" runat="server" class="form-control "></asp:TextBox>
+                                                <label for="emmail_register">Parking Area Size (sqft)</label>
+                        <asp:TextBox ID="txtparkingsize" placeholder="Example: 1200" runat="server" class="form-control "></asp:TextBox>
 
-                           <label for="emmail_register">Document Parking</label>
-                        <asp:FileUpload ID="FileUpload1" class="form-control " runat="server" />
-
-
-
-                        
-                                                <label for="emmail_register">Discription</label>
+                           <label for="emmail_register">Parking Space Agreement Document (optional)</label>
+                        <asp:FileUpload ID="FileUpload1" class="form-control " runat="server"/>
+                        <label for="emmail_register">Discription (Terms and Conditions)</label>
                         <cc1:Editor ID="Editor1" runat="server" />
                        
                       <asp:Button ID="Button2" runat="server" Text="Submit" class="button" 
@@ -445,7 +441,7 @@
                        
                        
                                               
-<asp:SqlDataSource ID="SqlDataSource222" runat="server" 
+                            <asp:SqlDataSource ID="SqlDataSource222" runat="server" 
                             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
                             
                             SelectCommand="SELECT [Parking_Name], [Parking_Id] FROM [Admin_Rent_Space] WHERE ([Uniq_Id] = @Uniq_Id)">

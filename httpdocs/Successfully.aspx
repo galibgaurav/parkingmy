@@ -18,23 +18,23 @@
             <div class="title-area">
               <h2 class="tittle"> <span>Successfully Book Parking</span></h2>
               <span class="tittle-line"></span>
-              <p>Parking My is  pre-bookable parking. The idea is brutally simple: we connect drivers in search of parking with anyone who has a space going spare, whether in a car park, private driveway, church, school, or pub.</p>
+              <p>Parking My is  pre-bookable parking. The idea is brutally simple: we connect drivers in search of parking with anyone who has a spare parking space, whether in a car park, private driveway, church, school, or pub.</p>
             </div>
             <div class="welcome-content">
               <ul class="wc-table">
               
 
               <asp:Label ID="Label4" Visible="false" runat="server" Text=""></asp:Label>
-                    <asp:Label ID="txtname1" Visible="false" runat="server" Text=""></asp:Label>
-                     <asp:Label ID="txtname" Visible="false" runat="server" Text=""></asp:Label>
-                       <asp:Label ID="txtfromdate" Visible="false" runat="server" Text=""></asp:Label>
-                     <asp:Label ID="txttodate" Visible="false" runat="server" Text=""></asp:Label>
-                      <asp:Label ID="txtvehicalname" Visible="false" runat="server" Text=""></asp:Label>
-                      <asp:Label ID="txttype" Visible="false" runat="server" Text=""></asp:Label>
-                       <asp:Label ID="txtpname" Visible="false" runat="server" Text=""></asp:Label>
-                        <asp:Label ID="txtaddress" Visible="false" runat="server" Text=""></asp:Label>
-                        <asp:Label ID="txtmobile2" Visible="false" runat="server" Text=""></asp:Label>
-                         <asp:Label ID="txtmodelname" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txtname1" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txtname" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txtfromdate" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txttodate" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txtvehicalname" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txttype" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txtpname" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txtaddress" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txtmobile2" Visible="false" runat="server" Text=""></asp:Label>
+              <asp:Label ID="txtmodelname" Visible="false" runat="server" Text=""></asp:Label>
                   
               </ul>
             </div>

@@ -50,7 +50,7 @@ public partial class Admin_Add_Property_Type : System.Web.UI.Page
                 cmd.ExecuteNonQuery();
                 txtspace.Text = "";
 
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('  Insert Prperty Successfully ');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('  Insert Property Successfully ');", true);
                 GridView1.DataBind();
                 con.Close();
             }

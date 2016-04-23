@@ -55,11 +55,8 @@
                  
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                         ControlToValidate="txtconform_password" 
-                        ErrorMessage="Please Enter Conform Password" ValidationGroup="ab"></asp:RequiredFieldValidator>
+                        ErrorMessage="Please Enter Confirm Password" ValidationGroup="ab"></asp:RequiredFieldValidator>
                         
-                   
-                      
-                   
                        <%-- <button class="button"><i class="fa fa-user"></i> Create an account</button>--%>
                       <asp:Button ID="Button2" runat="server" Text="Submit" class="button" 
                                                  ValidationGroup="ab" onclick="Button2_Click" ></asp:Button>

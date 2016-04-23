@@ -180,7 +180,7 @@ public partial class Default2 : System.Web.UI.Page
         }
         sconn.Open();
 
-        SqlCommand abcdd = new SqlCommand("select MIN(Rate) From Admin_Parking_Rate where Pcode=@Pcode ", sconn);
+        SqlCommand abcdd = new SqlCommand("select MIN(Rate) From Admin_Parking_Rate1 where Pcode=@Pcode ", sconn);
         abcdd.Parameters.AddWithValue("@Pcode", lbl.Text);
         SqlDataAdapter daa = new SqlDataAdapter(abcdd);
         DataTable dta = new DataTable();

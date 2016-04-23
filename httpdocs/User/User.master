@@ -13,7 +13,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta content="1 days" name="revisit-after" />
     <%--<link rel="shortcut icon" href="../images/logo.png" />--%>
-
+    <link rel="shortcut icon" type="image/icon" href="assets/images/favicon1.ico"/>
     <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css" tppabs="http://kutethemes.com/html/kuteshop/html/assets/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/lib/font-awesome/css/font-awesome.min.css" tppabs="http://kutethemes.com/html/kuteshop/html/assets/lib/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/lib/select2/css/select2.min.css" tppabs="http://kutethemes.com/html/kuteshop/html/assets/lib/select2/css/select2.min.css" />
@@ -30,6 +30,7 @@
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+  
 </head>
 <body>
     <form id="form1" runat="server">
@@ -40,7 +41,7 @@
                         <div class="container">
                             <div class="nav-top-links">
                                 <a class="first-item" href="#"></a>
-                                <a href="#" style="color: white;"><i class="fa fa-phone"></i>+91-9902738900</a>
+                                <a href="#" style="color: white;"><i class="fa fa-phone"></i>+91-9448159227</a>
                                 <a href="#" style="color: white;"><i class="fa fa-envelope"></i>support@parkingmy.com</a>
 
                             </div>
@@ -50,7 +51,6 @@
 
                                 <a href="https://plus.google.com/109417580993695308682" target="_blank" style="color: white;"><i class="fa fa-google-plus"></i></a>
                             </div>
-
 
                             <div class="support-link">
                                 <asp:LinkButton ID="LinkButton1" runat="server" Style="border-right: #FF9900; border-radius: 3px; padding: 7px; background-color: #FF9900; color: white;" OnClick="LinkButton1_Click">Rent Out Your Space</asp:LinkButton>
@@ -214,9 +214,9 @@
         </div>
     </form>
 
-    <script src="js/libs/jquery-1.10.1.min.js" tppabs="http://preview.jumpstartthemes.com/target-admin/js/libs/jquery-1.10.1.min.js"></script>
+    <%--<script src="js/libs/jquery-1.10.1.min.js" tppabs="http://preview.jumpstartthemes.com/target-admin/js/libs/jquery-1.10.1.min.js"></script>
     <script src="js/libs/jquery-ui-1.9.2.custom.min.js" tppabs="http://preview.jumpstartthemes.com/target-admin/js/libs/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="js/libs/bootstrap.min.js" tppabs="http://preview.jumpstartthemes.com/target-admin/js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/bootstrap.min.js" tppabs="http://preview.jumpstartthemes.com/target-admin/js/libs/bootstrap.min.js"></script>--%>
 
     <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
     <!-- Script-->

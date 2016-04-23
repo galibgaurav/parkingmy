@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css"/>  
      <!-- Theme color -->
     <link id="switcher" href="assets/css/theme-color/default.css" rel="stylesheet">
-
+   
     <!-- Main Style -->
     <link href="style.css" rel="stylesheet">
 
@@ -156,11 +156,18 @@
 </style>
 <script type="text/javascript" src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIrlPtnZgEk&sensor=false">
 </script>
+    <script type="text/javascript">
+        function CurrentDateShowing(e) {
+            if (!e.get_selectedDate() || !e.get_element().value)
 
+                e._selectedDate = (new Date()).getDateOnly();
+        }
+</script>
 </head>
 <body onload="initialize()">
 <script type="text/javascript">
     function initialize() {
+        debugger;
         var markers = JSON.parse('<%=ConvertDataTabletoString() %>');
         var mapOptions = {
             center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
@@ -265,7 +272,7 @@
         </asp:ContentPlaceHolder>
     </div>
     </form>
-        
+   
   <!-- initialize jQuery Library --> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

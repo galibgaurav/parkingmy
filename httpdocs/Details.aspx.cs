@@ -25,7 +25,7 @@ public partial class Details : System.Web.UI.Page
             else
             {
                 codeee = Request.QueryString["Code"].ToString();
-                Label12.Text =Request.QueryString["Code"].ToString();
+                Label12.Text = Request.QueryString["Code"].ToString();
                 try
                 {
 
@@ -39,11 +39,11 @@ public partial class Details : System.Web.UI.Page
                 }
                 catch
                 {
-                    Response.Redirect("http://unitechitsolution.in/");
+                    Response.Redirect("http://www.parkingmy.com/");
                 }
             }
         }
-        catch
+        catch(Exception ex)
         {
             Response.Redirect("Default.aspx");
         }
@@ -69,7 +69,7 @@ public partial class Details : System.Web.UI.Page
         {
             Panel2.Visible = false;
         }
-        
+
     }
     public string ConvertDataTabletoString()
     {
@@ -147,7 +147,7 @@ public partial class Details : System.Web.UI.Page
         }
     }
 
-      private void Bind1()
+    private void Bind1()
     {
         if (abc.State == ConnectionState.Open)
         {
@@ -165,7 +165,7 @@ public partial class Details : System.Web.UI.Page
             Repeater1.DataBind();
         }
     }
- 
+
     protected void Button2_Click(object sender, EventArgs e)
     {
         Panel1.Visible = true;
@@ -209,26 +209,33 @@ public partial class Details : System.Web.UI.Page
     {
         try
         {
-            if (Session["user"] != "" || Session["user"] != null)
-            {
-                string xxx = Session["user"].ToString();
+            //if (Session["user"] != "" || Session["user"] != null)
+            //{
+            //    string xxx = Session["user"].ToString();
+            //    Session["booked"] = Label12.Text;
+            //    Response.Redirect("Booking.aspx");
+            //}
+            //else
+            //{
+            //    Session["booked"] = Label12.Text;
+            //    string aaa = HttpContext.Current.Request.Url.AbsoluteUri;
+            //    Response.Redirect("Login.aspx?Code=" + codeee + "");
+            //}
+            
                 Session["booked"] = Label12.Text;
-                Response.Redirect("Booking.aspx");
+                Response.Redirect("Booking.aspx",false);
             }
-            else
-            {
-                Session["booked"] = Label12.Text;
-                string aaa = HttpContext.Current.Request.Url.AbsoluteUri;
-                Response.Redirect("Login.aspx?Code=" + codeee + "");
-              
-
-            }
-        }
-        catch
+        //catch
+        //{
+        //    Session["booked"] = Label12.Text;
+        //    string aaa = HttpContext.Current.Request.Url.AbsoluteUri;
+        //    Response.Redirect("Login.aspx?Code=" + codeee + "");
+        //}
+        catch(Exception Ex)
         {
-            Session["booked"] = Label12.Text;
             string aaa = HttpContext.Current.Request.Url.AbsoluteUri;
-            Response.Redirect("Login.aspx?Code=" + codeee + "");
+            //Response.Redirect("Login.aspx?Code=" + codeee + "");
+            Response.Redirect("Default.aspx");
         }
     }
     private void Page_Error(object sender, EventArgs e)

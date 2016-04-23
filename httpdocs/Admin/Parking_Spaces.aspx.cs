@@ -384,7 +384,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@Parking_Name", DropDownList1.SelectedItem.ToString());
                 cmd.ExecuteNonQuery();
                 GridView2.DataBind();
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Insert Successfull ');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Upload Successfull ');", true);
                 Label5.Text = "";
             }
             else

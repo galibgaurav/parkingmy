@@ -50,7 +50,7 @@ public partial class Admin_Category : System.Web.UI.Page
                 cmd.ExecuteNonQuery();
                 txtcategory.Text = "";
 
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert(' Date Insert Successfully ');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert(' Date Insert Successful ');", true);
                 GridView1.DataBind();
                 con.Close();
             }

@@ -11,12 +11,34 @@ using System.Drawing;
 
 public partial class User_Parking_Spaces : System.Web.UI.Page
 {
-    string ss, xxx, sss;
+    string ss, xxx, sss; string selectedLogi, selectedLat, selectedArea;
     SqlConnection sconn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        Button3.ForeColor = Color.White;
         getCurrentDate11();
         getCurrentDate();
+        if (Session["areaa"] != null)
+        {
+            txtarea.Text = Session["areaa"].ToString();
+        }
+        //if (Session["lat"] != null)
+        //{
+        //    selectedLat = Session["lat"].ToString();
+        //}
+        //if (Session["long"] != null)
+        //{
+        //    selectedLogi = Session["long"].ToString();
+        //}
+        if (Session["lat"] != null)
+        {
+            latBox.Text = Session["lat"].ToString();
+        }
+        if (Session["long"] != null)
+        {
+            lngBox.Text = Session["long"].ToString();
+        }
         try
         {
             if (Session["Expire"] != "0")
@@ -24,6 +46,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
                 if (Session["user"] != "" || Session["user"] != null || Session["Expire"] != "0")
                 {
                     Label3.Text = Session["Registration_Id"].ToString();
+
                 }
                 else
                 {
@@ -84,7 +107,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
 
                 getCurrentDate();
                 getCurrentDate11();
-                SqlCommand cmd = new SqlCommand("insert into Admin_Rent_Space(Full_Area,Final_Km,Final_Time,lat,longt,Parking_Id,Parking_Name,Address,Space_Type_Id,Space_Type_Name,Property_Id,Property_Name,State_Id,State_Name,City_Id,City_Name,Area_Id,Area_Name,Postal_Code,Available_Space,Parking_Size,Attachment,Facilities,Discription,Uniq_Id,Default_Date) values(@Full_Area,@Final_Km,@Final_Time,@lat,@longt,@Parking_Id,@Parking_Name,@Address,@Space_Type_Id,@Space_Type_Name,@Property_Id,@Property_Name,@State_Id,@State_Name,@City_Id,@City_Name,@Area_Id,@Area_Name,@Postal_Code,@Available_Space,@Parking_Size,@Attachment,@Facilities,@Discription,@Uniq_Id,@Default_Date)", sconn);
+                SqlCommand cmd = new SqlCommand("insert into Admin_Rent_Space(Full_Area,Final_Km,Final_Time,owner_mail,lat,longt,Parking_Id,Parking_Name,Address,Space_Type_Id,Space_Type_Name,Property_Id,Property_Name,State_Id,State_Name,City_Id,City_Name,Area_Id,Area_Name,Postal_Code,Available_Space,Parking_Size,Attachment,Facilities,Discription,Uniq_Id,Default_Date) values(@Full_Area,@Final_Km,@Final_Time,@owner_mail,@lat,@longt,@Parking_Id,@Parking_Name,@Address,@Space_Type_Id,@Space_Type_Name,@Property_Id,@Property_Name,@State_Id,@State_Name,@City_Id,@City_Name,@Area_Id,@Area_Name,@Postal_Code,@Available_Space,@Parking_Size,@Attachment,@Facilities,@Discription,@Uniq_Id,@Default_Date)", sconn);
                 cmd.Parameters.AddWithValue("@Space_Type_Id", DropDownList3.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@Space_Type_Name", DropDownList3.SelectedItem.ToString());
                 cmd.Parameters.AddWithValue("@Property_Id", DropDownList4.SelectedValue.ToString());
@@ -107,6 +130,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@Parking_Name", TextBox1.Text);
                 cmd.Parameters.AddWithValue("@Parking_Id", getCurrentDate());
                 cmd.Parameters.AddWithValue("@Full_Area", Session["areaa"].ToString());
+                cmd.Parameters.AddWithValue("@owner_mail", Session["Email_Id"].ToString());
                 cmd.Parameters.AddWithValue("@Final_Km", Session["km"].ToString());
                 cmd.Parameters.AddWithValue("@Final_Time", Session["time"].ToString());
                 cmd.Parameters.AddWithValue("@lat", Session["lat"].ToString());
@@ -133,7 +157,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
 
                 getCurrentDate();
                 getCurrentDate11();
-                SqlCommand cmd = new SqlCommand("insert into Admin_Rent_Space(Full_Area,Final_Km,Final_Time,lat,longt,Parking_Id,Parking_Name,Address,Space_Type_Id,Space_Type_Name,Property_Id,Property_Name,State_Id,State_Name,City_Id,City_Name,Area_Id,Area_Name,Postal_Code,Available_Space,Parking_Size,Facilities,Discription,Uniq_Id,Default_Date) values(@Full_Area,@Final_Km,@Final_Time,@lat,@longt,@Parking_Id,@Parking_Name,@Address,@Space_Type_Id,@Space_Type_Name,@Property_Id,@Property_Name,@State_Id,@State_Name,@City_Id,@City_Name,@Area_Id,@Area_Name,@Postal_Code,@Available_Space,@Parking_Size,@Facilities,@Discription,@Uniq_Id,@Default_Date)", sconn);
+                SqlCommand cmd = new SqlCommand("insert into Admin_Rent_Space(Full_Area,Final_Km,Final_Time,owner_mail,lat,longt,Parking_Id,Parking_Name,Address,Space_Type_Id,Space_Type_Name,Property_Id,Property_Name,State_Id,State_Name,City_Id,City_Name,Area_Id,Area_Name,Postal_Code,Available_Space,Parking_Size,Facilities,Discription,Uniq_Id,Default_Date) values(@Full_Area,@Final_Km,@Final_Time,@owner_mail,@lat,@longt,@Parking_Id,@Parking_Name,@Address,@Space_Type_Id,@Space_Type_Name,@Property_Id,@Property_Name,@State_Id,@State_Name,@City_Id,@City_Name,@Area_Id,@Area_Name,@Postal_Code,@Available_Space,@Parking_Size,@Facilities,@Discription,@Uniq_Id,@Default_Date)", sconn);
                 cmd.Parameters.AddWithValue("@Space_Type_Id", DropDownList3.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@Space_Type_Name", DropDownList3.SelectedItem.ToString());
                 cmd.Parameters.AddWithValue("@Property_Id", DropDownList4.SelectedValue.ToString());
@@ -157,6 +181,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@Full_Area", Session["areaa"].ToString());
                 cmd.Parameters.AddWithValue("@Final_Km", Session["km"].ToString());
                 cmd.Parameters.AddWithValue("@Final_Time", Session["time"].ToString());
+                cmd.Parameters.AddWithValue("@owner_mail", Session["Email_Id"].ToString());
                 cmd.Parameters.AddWithValue("@lat", Session["lat"].ToString());
                 cmd.Parameters.AddWithValue("@longt", Session["long"].ToString());
                 cmd.ExecuteNonQuery();
@@ -208,6 +233,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@lat", Session["lat"].ToString());
                 cmd.Parameters.AddWithValue("@longt", Session["long"].ToString());
                 cmd.Parameters.AddWithValue("@Full_Area", Session["areaa"].ToString());
+                
                 cmd.Parameters.AddWithValue("@Final_Km", Session["km"].ToString());
                 cmd.Parameters.AddWithValue("@Final_Time", Session["time"].ToString());
                 cmd.Parameters.AddWithValue("@Default_Date", getCurrentDate11());
@@ -291,13 +317,34 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
         Panel1.Visible = true;
         Panel2.Visible = false;
         Panel3.Visible = false;
+
+        Button4.ForeColor = Color.Black;
+        Button3.ForeColor = Color.White;
+        Button1.ForeColor = Color.Black;
     }
     protected void Button4_Click(object sender, EventArgs e)
     {
+        
         Panel1.Visible = false;
         Panel2.Visible = true;
         Panel3.Visible = false;
+        Button4.ForeColor = Color.White;
+        Button3.ForeColor = Color.Black;
+        Button1.ForeColor = Color.Black;
     }
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Panel3.Visible = true;
+        Panel1.Visible = false;
+        Panel2.Visible = false;
+        Button4.ForeColor = Color.Black;
+        Button3.ForeColor = Color.Black;
+        Button1.ForeColor = Color.White;
+
+    }
+
     protected void GridView1_DataBound(object sender, EventArgs e)
     {
 
@@ -356,13 +403,6 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
         //}
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Panel3.Visible = true;
-        Panel1.Visible = false;
-        Panel2.Visible = false;
-    }
-
     protected void DropDownList1_DataBound(object sender, EventArgs e)
     {
         DropDownList1.Items.Insert(0,"---Select Parking Name--");
@@ -376,7 +416,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
             {
                 string abcd = "Gallery/" + FileUpload2.FileName;
              
-                string abcde = "../Gallery/" + FileUpload2.FileName;
+                string abcde = "~/Gallery/" + FileUpload2.FileName;
                 FileUpload2.SaveAs(MapPath(abcde));
                 if (sconn.State == ConnectionState.Open)
                 {
@@ -389,7 +429,7 @@ public partial class User_Parking_Spaces : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@Parking_Name", DropDownList1.SelectedItem.ToString());
                 cmd.ExecuteNonQuery();
                 GridView2.DataBind();
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Insert Successfull ');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Upload successful ');", true);
                 Label5.Text = "";
             }
             else

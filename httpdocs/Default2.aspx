@@ -100,12 +100,11 @@
                    <a href='Details.aspx?code=<%# Eval("Parking_Id") %>' style="text-align: center;padding: 5px;border: 1px solid #00D999;color: white;background-color: #00D999;float: right;width: 113px;">View Details</a>
                      <img src="assets/images/address.png" /><h4 style="MARGIN-TOP: 0PX;/* TOP: 1PX; */display: inline-block;font-size: smaller;">
                    <asp:Label ID="Label2" runat="server"  style="padding-left: 7px;color: #181210;font-size: 15px;font-family: monospace;" Text='<%# Eval("Address") %>'></asp:Label></h4>
-                  <asp:Label ID="Label8" runat="server" Text='<%# Eval("Final_Km") %>'></asp:Label> KM, <asp:Label ID="Label9" runat="server" Text='<%# Eval("Final_Time") %>'></asp:Label> 
+                   <%--<asp:Label ID="Label8" runat="server" Text='<%# Eval("Final_Km") %>'></asp:Label> KM, <asp:Label ID="Label9" runat="server" Text='<%# Eval("Final_Time") %>'></asp:Label> --%>
                   </div>
                   
-                     </div>
-                    
-                                             </ItemTemplate>
+                </div>
+                        </ItemTemplate>
                         </asp:Repeater>
 
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 

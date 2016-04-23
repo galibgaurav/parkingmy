@@ -99,34 +99,64 @@ public partial class User_Edit_Profile : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string small = "~/Gallery/" + Label1.Text + FileUpload1.FileName;
-        FileUpload1.SaveAs(Server.MapPath(small));
-        if (FileUpload1.HasFile)
+        try
         {
-            if (sconn.State == ConnectionState.Open)
-            {
-                sconn.Close();
-            }
-            sconn.Open();
-            abc = Session["Email_Id"].ToString();
-            SqlCommand cmd1 = new SqlCommand("Select * from Admin_Login where Registration_Id='" + Label1.Text + "'", sconn);
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-            if (dt1.Rows.Count > 0)
+         
+            string small = "~/Gallery/" + Label1.Text + FileUpload1.FileName;
+            ParkingMy.Logic.ExceptionUtility.Loginfo("path for image " + Server.MapPath(small));
+            FileUpload1.SaveAs(Server.MapPath(small));
+            //int iFileSize = FileUpload1.PostedFile.ContentLength;
+            //bool fileType = FileUpload1.PostedFile;
+            //if()
+            if (FileUpload1.HasFile)
             {
                 if (sconn.State == ConnectionState.Open)
                 {
                     sconn.Close();
                 }
                 sconn.Open();
-                SqlCommand cmd = new SqlCommand("Update Admin_Login SET Username=@Username,Mobile_Number=@Mobile_Number,Profile_Pic=@Profile_Pic Where Registration_Id='" + Label1.Text + "'", sconn);
-                cmd.Parameters.AddWithValue("@Username", txtname.Text);
-                cmd.Parameters.AddWithValue("@Mobile_Number", txtmobile.Text);
-                cmd.Parameters.AddWithValue("@Profile_Pic", small);
-                cmd.ExecuteNonQuery();
-              //  dkl();
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Data Updated Successfully');", true);
+                abc = Session["Email_Id"].ToString();
+                SqlCommand cmd1 = new SqlCommand("Select * from Admin_Login where Registration_Id='" + Label1.Text + "'", sconn);
+                SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
+                DataTable dt1 = new DataTable();
+                ParkingMy.Logic.ExceptionUtility.Loginfo("going to run Admin_Login sql");
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    ParkingMy.Logic.ExceptionUtility.Loginfo("ran Admin_Login sql successful");
+                    if (sconn.State == ConnectionState.Open)
+                    {
+                        sconn.Close();
+                    }
+                    sconn.Open();
+                    SqlCommand cmd = new SqlCommand("Update Admin_Login SET Username=@Username,Mobile_Number=@Mobile_Number,Profile_Pic=@Profile_Pic Where Registration_Id='" + Label1.Text + "'", sconn);
+                    cmd.Parameters.AddWithValue("@Username", txtname.Text);
+                    cmd.Parameters.AddWithValue("@Mobile_Number", txtmobile.Text);
+                    cmd.Parameters.AddWithValue("@Profile_Pic", small);
+                    ParkingMy.Logic.ExceptionUtility.Loginfo("going to set Admin_Login sql");
+                    cmd.ExecuteNonQuery();
+                    //  dkl(); 
+                    ParkingMy.Logic.ExceptionUtility.Loginfo("going to set Admin_Login sql successful");
+                    ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Data Updated Successfully');", true);
+                }
+                else
+                {
+                    if (sconn.State == ConnectionState.Open)
+                    {
+                        sconn.Close();
+                    }
+                    sconn.Open();
+                    SqlCommand cmd = new SqlCommand("Insert INTO Admin_Login (Registration_Id,Username,Mobile_Number,Profile_Pic) Values(@Registration_Id,@Username,@Mobile_Number,@Profile_Pic)", sconn);
+                    cmd.Parameters.AddWithValue("@Username", txtname.Text);
+                    cmd.Parameters.AddWithValue("@Mobile_Number", txtmobile.Text);
+                    cmd.Parameters.AddWithValue("@Registration_Id", Label1.Text);
+                    cmd.Parameters.AddWithValue("@Profile_Pic", small);
+                    ParkingMy.Logic.ExceptionUtility.Loginfo("Insert going to set Admin_Login sql");
+                    cmd.ExecuteNonQuery();
+                    //  dkl();
+                    ParkingMy.Logic.ExceptionUtility.Loginfo("Insert going to set Admin_Login sql successful");
+                    ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Data Updated Successfully');", true);
+                }
             }
             else
             {
@@ -135,32 +165,20 @@ public partial class User_Edit_Profile : System.Web.UI.Page
                     sconn.Close();
                 }
                 sconn.Open();
-                SqlCommand cmd = new SqlCommand("Insert INTO Admin_Login (Registration_Id,Username,Mobile_Number,Profile_Pic) Values(@Registration_Id,@Username,@Mobile_Number,@Profile_Pic)", sconn);
+                SqlCommand cmd = new SqlCommand("Update Admin_Login SET Username=@Username,Mobile_Number=@Mobile_Number Where Registration_Id='" + Label1.Text + "'", sconn);
                 cmd.Parameters.AddWithValue("@Username", txtname.Text);
                 cmd.Parameters.AddWithValue("@Mobile_Number", txtmobile.Text);
-                cmd.Parameters.AddWithValue("@Registration_Id", Label1.Text);
-                cmd.Parameters.AddWithValue("@Profile_Pic", small);
+                //cmd.Parameters.AddWithValue("@Profile_Pic", small);
+                //  dkl();
                 cmd.ExecuteNonQuery();
-              //  dkl();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Data Updated Successfully');", true);
             }
+            calldata();
         }
-        else
+        catch (Exception ex)
         {
-            if (sconn.State == ConnectionState.Open)
-            {
-                sconn.Close();
-            }
-            sconn.Open();
-            SqlCommand cmd = new SqlCommand("Update Admin_Login SET Username=@Username,Mobile_Number=@Mobile_Number Where Registration_Id='" + Label1.Text + "'", sconn);
-            cmd.Parameters.AddWithValue("@Username", txtname.Text);
-            cmd.Parameters.AddWithValue("@Mobile_Number", txtmobile.Text);
-            //cmd.Parameters.AddWithValue("@Profile_Pic", small);
-          //  dkl();
-            cmd.ExecuteNonQuery();
-            ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Data Updated Successfully');", true);
+            ParkingMy.Logic.ExceptionUtility.LogException(ex,"Application");
         }
-        calldata();
     }
 
 

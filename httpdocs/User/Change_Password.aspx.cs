@@ -69,7 +69,7 @@ public partial class A_SVMerchant_Change_password : System.Web.UI.Page
             txtoldpass.Text = "";
             txtconform_password.Text = "";
 
-            ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Password Change Successfully ');", true);
+            ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Password Changed Successfully ');", true);
 
         }
         else

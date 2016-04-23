@@ -50,7 +50,7 @@ public partial class Admin_Add_Space : System.Web.UI.Page
                 cmd.ExecuteNonQuery();
                 txtspace.Text = "";
 
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert(' Date Insert Successfully ');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert(' Date Insert successful ');", true);
                 GridView1.DataBind();
                 con.Close();
             }

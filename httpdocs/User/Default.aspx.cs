@@ -17,18 +17,18 @@ public partial class User_Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //try
-        //{
+        try
+        {
             subscription();
 
-        //}
-        //catch
-        //{
-        //    if (Session["Expire"] == "0")
-        //    {
-        //        Response.Redirect("Default.aspx");
-        //    }
-        //}
+        }
+        catch
+        {
+            if (Session["Expire"] == "0")
+            {
+                Response.Redirect("Default.aspx");
+            }
+        }
     }
 
     private void subscription()
@@ -42,67 +42,100 @@ public partial class User_Default : System.Web.UI.Page
         //    var localDateTime = DateTime.ParseExact(utcDateTimeString, "yy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal).ToShortDateString();
 
         //    string dateee = localDateTime;
-            DateTime sys = Convert.ToDateTime(System.DateTime.Now.ToShortDateString());
 
-            if (sconn.State == ConnectionState.Open)
+
+        if (Session["user"] != "" || Session["user"] != null)
+        {
+
+            Label4.Text = Session["Registration_Id"].ToString();
+
+            if (!IsPostBack)
             {
-                sconn.Close();
+                Session["Expire"] = "1";
+                call();
+                callverify();
             }
-            sconn.Open();
-            SqlCommand cmd1 = new SqlCommand("SELECT Registration_Id , Defoult_Date FROM Admin_Login", sconn);
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-            if (dt1.Rows.Count > 0)
-            {
-                string v1 = dt1.Rows[0]["Defoult_Date"].ToString();
-
-                DateTime day1 = Convert.ToDateTime(v1);
-                DateTime day = day1.AddMonths(3);
-                DateTime dt = day.AddDays(-2);
-                if (sys == dt)
-                {
-                    Label7.Text = "Your Account will Expire In 2 Days..";
-                }
-
-                if (sys < day)
-                {
-                    if (Session["user"] != "" || Session["user"] != null)
-                    {
-                        //   string abc = Session["Registration_Id"].ToString();
-                       
-                        Label4.Text = Session["Registration_Id"].ToString();
-                        TimeSpan objTimeSpan = day - sys;
-                        double Days = Convert.ToDouble(objTimeSpan.TotalDays);
-                        //Label6.Text = "Your Account will Expire In " + Convert.ToString(Days) + " Days..";
-
-                        if (!IsPostBack)
-                        {
-                            Session["Expire"] = "1";
-                            call();
-                            callverify();
-
-                            // name = Session["username"].ToString();
-                        }
-                    }
-                    else
-                    {
-
-                        Response.Redirect("Default.aspx");
-                    }
-                }
-                else
-                {
-                   
-                    Label5.Text = "Your Account Is Expired ON " + day.ToString();
-                   
-                    Session["Expire"] = "0";
-                   // ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Your Account Is Expired...Please Renew Your Pack')", true);
-                   // Response.Redirect("Default.aspx");
-                }
-          //  }
         }
+        else
+        {
+
+            Response.Redirect("Default.aspx");
+        }
+
     }
+    //Required in case if Subscription is sought periodically
+    //private void subscription()
+    //{
+    //    //DateTime ada = DateTime.Now.ToUniversalTime();
+    //    //var client = new TcpClient("time.nist.gov", 13);
+    //    //using (var streamReader = new StreamReader(client.GetStream()))
+    //    //{
+    //    //    var response = streamReader.ReadToEnd();
+    //    //    var utcDateTimeString = response.Substring(7, 17);
+    //    //    var localDateTime = DateTime.ParseExact(utcDateTimeString, "yy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal).ToShortDateString();
+
+    //    //    string dateee = localDateTime;
+    //        DateTime sys = Convert.ToDateTime(System.DateTime.Now.ToShortDateString());
+
+    //        if (sconn.State == ConnectionState.Open)
+    //        {
+    //            sconn.Close();
+    //        }
+    //         sconn.Open();
+    //        SqlCommand cmd1 = new SqlCommand("SELECT Registration_Id , Defoult_Date FROM Admin_Login", sconn);
+    //        SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
+    //        DataTable dt1 = new DataTable();
+    //        da1.Fill(dt1);
+    //        if (dt1.Rows.Count > 0)
+    //        {
+    //            string v1 = dt1.Rows[0]["Defoult_Date"].ToString();
+
+    //            DateTime day1 = Convert.ToDateTime(v1);
+    //            DateTime day = day1.AddMonths(3);
+    //            DateTime dt = day.AddDays(-2);
+    //            if (sys == dt)
+    //            {
+    //                Label7.Text = "Your Account will Expire In 2 Days..";
+    //            }
+
+    //            if (sys < day)
+    //            {
+    //                if (Session["user"] != "" || Session["user"] != null)
+    //                {
+    //                    //   string abc = Session["Registration_Id"].ToString();
+
+    //                    Label4.Text = Session["Registration_Id"].ToString();
+    //                    TimeSpan objTimeSpan = day - sys;
+    //                    double Days = Convert.ToDouble(objTimeSpan.TotalDays);
+    //                    //Label6.Text = "Your Account will Expire In " + Convert.ToString(Days) + " Days..";
+
+    //                    if (!IsPostBack)
+    //                    {
+    //                        Session["Expire"] = "1";
+    //                        call();
+    //                        callverify();
+
+    //                        // name = Session["username"].ToString();
+    //                    }
+    //                }
+    //                else
+    //                {
+
+    //                    Response.Redirect("Default.aspx");
+    //                }
+    //            }
+    //            else
+    //            {
+
+    //                Label5.Text = "Your Account Is Expired ON " + day.ToString();
+
+    //                Session["Expire"] = "0";
+    //               // ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Your Account Is Expired...Please Renew Your Pack')", true);
+    //               // Response.Redirect("Default.aspx");
+    //            }
+    //      //  }
+    //    }
+    //}
 
 
     private void callverify()

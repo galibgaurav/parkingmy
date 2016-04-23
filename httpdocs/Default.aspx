@@ -6,17 +6,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Parking My</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="assets/images/favicon1.ico" />
     <!-- Font Awesome -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- Slick slider -->
     <link rel="stylesheet" type="text/css" href="assets/css/slick.css" />
     <!-- Fancybox slider -->
@@ -24,24 +24,24 @@
     <!-- Animate css -->
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css" />
     <!-- Theme color -->
-    <link id="switcher" href="assets/css/theme-color/default.css" rel="stylesheet">
-
+    <link id="switcher" href="assets/css/theme-color/default.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- Main Style -->
-    <link href="style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
 
     <!-- Fonts -->
     <!-- Open Sans for body font -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- Raleway for Title -->
-    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css' />
     <!-- Pacifico for 404 page   -->
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css' />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
     <style type="text/css">
         .modalBackground {
             filter: alpha(opacity=90);
@@ -138,78 +138,7 @@
         .pac-container.pac-logo::after {
             display: none;
         }
-    </style>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9CiSrNomU7HPw5PLIpFZYP6NXXOq0dlE&libraries=places&callback=initAutocomplete" async defer></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript">
-        function initAutocomplete() {
-
-            var options = {
-                componentRestrictions: { country: "IN" }
-            };
-            // Create the search box and link it to the UI element.
-
-            var input = document.getElementById('TextBox1');
-            var searchBox = new google.maps.places.Autocomplete(input, options);
-        }
-    </script>
-
-
-    <script type="text/javascript">
-        //$(document).ready(function () {
-        //    $("#Button6").click(function () {
-        //        debugger;
-        //        var geocoder = new google.maps.Geocoder();
-        //        var strSearch = document.getElementById('TextBox1').value;
-        //        geocoder.geocode({ 'address': strSearch }, function (results, status) {
-        //            if (status == google.maps.GeocoderStatus.OK) {
-        //                var x = results[0].geometry.location.lat();
-        //                var y = results[0].geometry.location.lng();
-        //                debugger;
-        //                document.getElementById('TextBox4').value = y;
-        //                document.getElementById('start').value = x;
-        //                document.getElementById('end').value = y;
-
-        //            } else {
-        //                //alert("Location Not Found...");
-        //                $('#myModalTitle').text('Location Search Error !');
-        //                $('#myModalMessage').text('Location Not Found.');
-        //                document.getElementById('btnError').click();
-        //                document.getElementById('txtSearch').value = "";
-        //            }
-        //        });
-        //    });
-        //});
-        function GeoCoordinate() {
-            var geocoder = new google.maps.Geocoder();
-            var strSearch = document.getElementById('TextBox1').value;
-            geocoder.geocode({ 'address': strSearch }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var x = results[0].geometry.location.lat();
-                    var y = results[0].geometry.location.lng();
-                    debugger;
-                    document.getElementById('TextBox4').value = y;
-                    document.getElementById('start').value = x;
-                    document.getElementById('end').value = y;
-                    return true;
-
-                    } else {
-                        //alert("Location Not Found...");
-                        $('#myModalTitle').text('Search Error !');
-                        $('#myModalMessage').text('Location Not Found.');
-                        document.getElementById('btnError').click();
-                        //document.getElementById('txtSearch').value = "";
-                        return false;
-                    }
-                });
-            }
-
-    </script>
-
-
-    <style>
+    
         .fontt {
             font-size: 60px !important;
         }
@@ -308,38 +237,67 @@
             }
         }
     </style>
-
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwbt61m8Mpefk04QjCIJEeQ8AWzpCIy8Y&libraries=places&callback=initAutocomplete" type="text/javascript"></script>
     <script type="text/javascript">
-        google.maps.event.addDomListener(window, 'load', function () {
-            var places = new google.maps.places.Autocomplete(document.getElementById('TextBox1'));
-            google.maps.event.addListener(places, 'place_changed', function () {
-                var place = places.getPlace();
-                var address = place.formatted_address;
-                var latitude = place.geometry.location.lat();
-                var longitude = place.geometry.location.lng();
-                var mesg = "Address: " + address;
-                mesg += "\nLatitude: " + latitude;
-                mesg += "\nLongitude: " + longitude;
-                // alert(mesg);
-                document.getElementById('start').value = latitude;
-                document.getElementById('end').value = longitude;
+        function initAutocomplete() {
+            google.maps.event.addDomListener(window, 'load', function () {
+
+                var options = {
+                    componentRestrictions: { country: "IN" }
+                };
+                var places = new google.maps.places.Autocomplete(document.getElementById('TextBox1'), options);
+                google.maps.event.addListener(places, 'place_changed', function () {
+                    var place = places.getPlace();
+                    var address = place.formatted_address;
+                    var latitude = place.geometry.location.lat();
+                    var longitude = place.geometry.location.lng();
+                    var mesg = "Address: " + address;
+                    mesg += "\nLatitude: " + latitude;
+                    mesg += "\nLongitude: " + longitude;
+                    // alert(mesg);
+                    document.getElementById('start').value = latitude;
+                    document.getElementById('end').value = longitude;
+                });
             });
-        });
+        }
         function MakeLoginFormVisible() {
             if (!$('#loginFormID').is(':visible')) {
                 $('#loginFormID').css('display', 'block');
             }
-         
+
+        }
+        function GeoCoordinate() {
+            var geocoder = new google.maps.Geocoder();
+            var strSearch = document.getElementById('TextBox1').value;
+            if (strSearch == null || strSearch == '') {
+                alert('Please select a location before searching.');
+            }
+            else {
+                geocoder.geocode({ 'address': strSearch }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        var x = results[0].geometry.location.lat();
+                        var y = results[0].geometry.location.lng();
+                        console.log('x:' + x);
+                        console.log('y:' + y);
+                        debugger;
+                        document.getElementById('TextBox4').value = y;
+                        document.getElementById('start').value = x;
+                        document.getElementById('end').value = y;
+                        // if()
+                        return true;
+
+                    }
+                });
+            }
         }
     </script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-
+    
 </head>
 <body>
-
-
+   <marquee >--Site is under beta testing.-- --Register your parking space before 28th June 2016 and win shoppers stop gift card.--</marquee>
+     
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
@@ -349,41 +307,39 @@
             <!-- END SCROLL TOP BUTTON -->
 
             <!-- Start header section -->
-            <header id="header">
-    <div class="header-inner">
-      <!-- Header image -->
-      <img src="assets/images/header-bg.jpg" class="imghh" alt="img">
-      <div class="header-overlay">
-        <div class="header-content">
-        <!-- Start header content slider -->
-        <h2 class="header-slide fontt" ><img src="assets/images/Logo%20(1).png" />
-          <span class="jack12" style="    font-style: italic;    font-family: monospace;">A Place To Find/Rent Parking Space.</span>
-          </h2>
-          
-          
-        <div class="header-btn-area" style="margin-top: 0px;">
-       
-           <asp:Panel ID="Panel14" runat="server" DefaultButton="Button6">
-                <asp:TextBox ID="TextBox1" placeholder="Where Do you want to park? Ex:: (Area, City, State)" class="jack2 jackbtn" style="width: 52%;
-                background-color: white;
-                border-radius: 7px;
-                padding: 12px;" runat="server">
-                </asp:TextBox>
-                <asp:Button ID="Button6" runat="server" CssClass="marr"
-                style="font-size: larger; width: 126px;color: white;border-radius: 7px;padding: 8px;background-color: #00d999;font-weight: bold;"  
-                Text="Search" OnClientClick="return GeoCoordinate();" OnClick="Button6_Click">
-                </asp:Button>
-               <input id="start" name="start" type="hidden"  type="text" placeholder="Start Destination" style=" display: inline-block; width: 30%;">
-               <input type="hidden" id="end" name="end" type="text" class="form-control search-input" placeholder="End Destination" style=" display: inline-block; width: 30%;">
-                <br />
-                <asp:LinkButton ID="LinkButton4" runat="server" CssClass="butston button-default dklll emm" style="margin: 1em;background: none;vertical-align: middle;position:relative;      z-index: 1;width: 41%;float: none;font-size: 27px;color: white !important;background-color: rgba(0, 217, 153, 0.4);" Text="Rent Out Your Space">
-                </asp:LinkButton>
-             </asp:Panel>
-         </div>
-      </div>
-      </div>      
-    </div>
-  </header>
+
+            <div class="header-inner">
+                <!-- Header image -->
+                <img src="assets/images/header-bg.jpg" class="imghh" alt="img">
+                <div class="header-overlay">
+                    <div class="header-content">
+                        <!-- Start header content slider -->
+                        <h2 class="header-slide fontt">
+                            <img src="assets/images/Logo%20(1).png" />
+                            <span class="jack12" style="font-style: italic; font-family: monospace;">A Place To Find/Rent Parking Space.</span>
+                        </h2>
+
+
+                        <div class="header-btn-area" style="margin-top: 0px;">
+
+                            <asp:Panel ID="Panel14" runat="server" DefaultButton="Button6">
+                                <asp:TextBox ID="TextBox1" placeholder="Where do you want to park? Ex:: (Area, City, State)" class="jack2 jackbtn" Style="width: 52%; background-color: white; border-radius: 7px; padding: 12px;"
+                                    runat="server">
+                                </asp:TextBox>
+                                <asp:Button ID="Button6" runat="server" CssClass="marr"
+                                    Style="font-size: larger; width: 126px; color: white; border-radius: 7px; padding: 8px; background-color: #00d999; font-weight: bold;"
+                                    Text="Search" OnClientClick="return GeoCoordinate();" OnClick="Button6_Click"></asp:Button>
+                                <input id="start" name="start" type="hidden" type="text" placeholder="Start Destination" style="display: inline-block; width: 30%;">
+                                <input type="hidden" id="end" name="end" type="text" class="form-control search-input" placeholder="End Destination" style="display: inline-block; width: 30%;">
+                                <br />
+                                <asp:LinkButton ID="LinkButton4" runat="server" CssClass="butston button-default dklll emm" Style="margin: 1em; background: none; vertical-align: middle; position: relative; z-index: 1; width: 41%; float: none; font-size: 27px; color: white !important; background-color: rgba(0, 217, 153, 0.4);" Text="Rent Out Your Space">
+                                </asp:LinkButton>
+                            </asp:Panel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div id="loginFormID">
                 <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" CancelControlID="Button3" BackgroundCssClass="modalBackground" PopupControlID="Panel1" TargetControlID="LinkButton1">
@@ -520,8 +476,8 @@
 
 
                                     <asp:RegularExpressionValidator ID="Regex2" Display="None" runat="server" ControlToValidate="txtuserpass"
-                                        ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
-                                        ErrorMessage="Minimum 8 characters, 1 Alphabet, 1 Number and 1 Special Character" ValidationGroup="abcccc" ForeColor="Red" />
+                                        ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,})$"
+                                        ErrorMessage="Password must be of minimum 6 characters and No Special Character" ValidationGroup="abcccc" ForeColor="Red" />
 
 
 
@@ -559,7 +515,7 @@
                                     <asp:Button ID="Button16" runat="server" Text="Finish" ValidationGroup="jacks"
                                         Style="color: white; background-color: #333;"
                                         class="btn form-btn btn-lg btn-block" OnClick="Button5_Clickfirstverify" />
-                                    <asp:Button ID="Button17" runat="server" Text="Cancle"
+                                    <asp:Button ID="Button17" runat="server" Text="Cancel"
                                         Style="color: white; background-color: #333;"
                                         class="btn form-btn btn-lg btn-block" OnClick="Button5_Clickfirstcancel" />
                                     <br />
@@ -635,8 +591,8 @@
 
                                         <br />
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator10" Display="None" Style="font-size: xx-small;" runat="server" ControlToValidate="txtuserpass22"
-                                            ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
-                                            ErrorMessage="Minimum 8 characters, 1 Alphabet, 1 Number and 1 Special Character" ValidationGroup="abccccc" ForeColor="Red" />
+                                            ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,})$"
+                                            ErrorMessage="Password must be of minimum 6 characters and No Special Character" ValidationGroup="abccccc" ForeColor="Red" />
                                         <asp:TextBox ID="txtuserpass22" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server"
                                             ErrorMessage="Enter Password" ControlToValidate="txtuserpass22"
@@ -677,7 +633,7 @@
                                         <asp:Button ID="Button14" runat="server" Text="Finish" ValidationGroup="jack"
                                             Style="color: white; background-color: #333;"
                                             class="btn form-btn btn-lg btn-block" OnClick="Button5_Click22" />
-                                        <asp:Button ID="Button15" runat="server" Text="Cancle"
+                                        <asp:Button ID="Button15" runat="server" Text="Cancel"
                                             Style="color: white; background-color: #333;"
                                             class="btn form-btn btn-lg btn-block" OnClick="Button5_Click222" />
                                         <br />
@@ -743,7 +699,7 @@
                                         <asp:Button ID="Button12" runat="server" Text="Recover" ValidationGroup="dssss"
                                             Style="color: white; background-color: #333;"
                                             class="btn form-btn btn-lg btn-block" OnClick="Button7_Click2" />
-                                        <asp:Button ID="Button13" runat="server" Text="Cancle"
+                                        <asp:Button ID="Button13" runat="server" Text="Cancel"
                                             Style="color: white; background-color: #333;"
                                             class="btn form-btn btn-lg btn-block" OnClick="Button8_Click2" />
                                         <br />
@@ -773,166 +729,166 @@
 
             <!-- Start menu section -->
             <section id="menu-area">
-    <nav class="navbar navbar-default main-navbar" role="navigation">  
-      <div class="container">
-        <div class="navbar-header">
-          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- LOGO -->                                               
-           <a class="navbar-brand logo" href="Default.aspx"><img src="assets/images/LogoHDSmall copy.png" style="
-    margin-top: 11px !important;
+	<nav class="navbar navbar-default main-navbar" role="navigation">  
+	  <div class="container">
+		<div class="navbar-header">
+		  <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <!-- LOGO -->                                               
+		   <a class="navbar-brand logo" href="Default.aspx"><img src="assets/images/LogoHDSmall copy.png" style="
+	margin-top: 11px !important;
 " alt="logo"></a>                      
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul id="top-menu" class="nav navbar-nav main-nav menu-scroll">
-            <li class="active"><a href="#header">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>               
-           
-                 <li><a href="#service">TEAM</a></li>      
-            <li> <asp:LinkButton ID="LinkButton1" runat="server" OnClientClick="MakeLoginFormVisible()">LOGIN</asp:LinkButton> </li>  
-             <li> <asp:LinkButton ID="LinkButton2" runat="server">REGISTER</asp:LinkButton> </li> 
-             <li><a href="#contact">CONTACT</a></li>
-          </ul>                            
-        </div><!--/.nav-collapse -->
-       <div class="search-area">
-          <%--<form action="">
-            <input id="search" name="search" type="text" placeholder="What're you looking for ?">
-            <input id="search_submit" value="Rechercher" type="submit">
-          </form>--%>
-        </div>         
-      </div>          
-    </nav> 
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+		  <ul id="top-menu" class="nav navbar-nav main-nav menu-scroll">
+			<li class="active"><a href="#header">HOME</a></li>
+			<li><a href="#about">ABOUT</a></li>               
+		   
+				 <li><a href="#service">TEAM</a></li>      
+			<li> <asp:LinkButton ID="LinkButton1" runat="server" OnClientClick="MakeLoginFormVisible()">LOGIN</asp:LinkButton> </li>  
+			 <li> <asp:LinkButton ID="LinkButton2" runat="server">REGISTER</asp:LinkButton> </li> 
+			 <li><a href="#contact">CONTACT</a></li>
+		  </ul>                            
+		</div><!--/.nav-collapse -->
+	   <div class="search-area">
+		  <%--<form action="">
+			<input id="search" name="search" type="text" placeholder="What're you looking for ?">
+			<input id="search_submit" value="Rechercher" type="submit">
+		  </form>--%>
+		</div>         
+	  </div>          
+	</nav> 
   </section>
             <!-- End menu section -->
 
             <!-- Start about section -->
             <section id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <!-- Start welcome area -->
-          <div class="welcome-area">
-            <div class="title-area">
-              <h2 class="tittle"  style="text-align:center !important;">How it works<span></span></h2>
-              <span class="tittle-line" style="text-align:center !important;"></span>
-              <p>Spare parking space can be proved much beneficial to parking space owner and parking space seeker. The space owner can register their parking space on ParkingMy.com while registration they need to pay a minimal subscription charge to ParkingMy.com.
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+		  <!-- Start welcome area -->
+		  <div class="welcome-area">
+			<div class="title-area">
+			  <h2 class="tittle"  style="text-align:center !important;">How it works<span></span></h2>
+			  <span class="tittle-line" style="text-align:center !important;"></span>
+			  <p>Spare parking space can be proved much beneficial to parking space owner and parking space seeker. The parking space owner can register their parking space on ParkingMy.com.
 At ParkingMy.com a space seeker or driver can find available parking spaces in a geo-location and can
 contact a space owner. Space seeker will be charged by space owner not by ParkingMy.com</p>
-            </div>
-            
-            <div class="welcome-content" style="padding: 10px; border-top: 1px solid #bbbbbb;">
-             <h2 class="tittle"  style="text-align:center !important;"><span>Parking Space Owners</span></h2>
-                <%--  <span class="tittle-line" style="text-align:center !important;"></span>--%>
-              <ul class="wc-table">
-                <li>
-                  <div class="single-wc-content wow fadeInUp">
-                 
-                    <span class="fa fa-server wc-icon"></span>
-                    <h4 class="wc-tittle" style="border-bottom: 1px solid rgba(187, 187, 187, 0);">LIST SPACE</h4>
-               
-                  </div>
-                </li>
-                <li>
-                  <div class="single-wc-content wow fadeInUp">
-                    <span class="fa fa-usd wc-icon"></span>
-                    <h4 class="wc-tittle" style="border-bottom: 1px solid rgba(187, 187, 187, 0);">PAY</h4>
-               
-                  </div>
-                </li>
-                <li>
-                  <div class="single-wc-content wow fadeInUp">
-                    <span class="fa fa-envelope-square wc-icon"></span>
-                    <h4 class="wc-tittle" style="border-bottom: 1px solid rgba(187, 187, 187, 0);">GET NOTIFIED</h4>
-                    <%--<p>At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>--%>
-                  </div>
-                </li>
-                <li>
-                  <div class="single-wc-content wow fadeInUp">
-                    <span class="fa fa-cart-arrow-down wc-icon"></span>
-                    <h4 class="wc-tittle" style="border-bottom: 1px solid rgba(187, 187, 187, 0);">GET PAID</h4>
-                  <%--  <p>At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>--%>
-                  </div>
-                </li>
-                
-               <diV style="padding-top: 230px;">
-             
-                <h2 class="tittle"  style="text-align:center !important;"><span>Parking Space Seekers</span></h2>
-                  </diV>
-                 <li>
-                  <div class="single-wc-content wow fadeInUp">
-                 
-                    <span class="fa fa-map-marker wc-icon"></span>
-                    <h4 class="wc-tittle">SEARCH PARKING SPACES</h4>
-                <p style="visibility:hidden;">At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="single-wc-content wow fadeInUp">
-                    <span class="fa fa-envelope wc-icon"></span>
-                    <h4 class="wc-tittle">NOTIFY SPACE OWNER</h4>
-                <p style="visibility:hidden;">At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>
-                  </div>
-                </li>
-                <li>
-                  <div class="single-wc-content wow fadeInUp">
-                    <span class="fa fa-exchange  -square wc-icon"></span>
-                    <h4 class="wc-tittle">NEGOTIATION</h4>
-                    <%--<p>At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>--%>
-                  </div>
-                </li>
-                <li>
-                  <div class="single-wc-content wow fadeInUp">
-                    <span class="fa fa-thumbs-o-up wc-icon"></span>
-                    <h4 class="wc-tittle">GET PARKING SPACE</h4>
-                  <%--  <p>At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>--%>
-                  </div>
-                </li>
-              
-              </ul>
-            </div>
-           
-          </div>
-          <!-- End welcome area -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="about-area">
-            <div class="row">
-              <div class="col-md-5 col-sm-6 col-xs-12">
-                <div class="about-left wow fadeInLeft">
-                  <img src="assets/images/about-img.jpg" alt="img">
-                  <%--<a class="introduction-btn" href="#">Introduction</a>--%>
-                </div>
-              </div>
-              <div class="col-md-7 col-sm-6 col-xs-12">
-                <div class="about-right wow fadeInRight">
-                  <div class="title-area">
-                    <h2 class="tittle">About <span>ParkingMy.com</span> </h2>
-                    <span class="tittle-line"></span>
-                    <p>
-                     "It all started from a middle class family's dream of buying a car, which could not lasted long since it got dropped by having no parking space in their home, So we wanted to solve the problem of limited or no parking space for us and for those who are in same page as we are".<br /><br />
+			</div>
+			
+			<div class="welcome-content" style="padding: 10px; border-top: 1px solid #bbbbbb;">
+			 <h2 class="tittle"  style="text-align:center !important;"><span>Parking Space Owners</span></h2>
+				<%--  <span class="tittle-line" style="text-align:center !important;"></span>--%>
+			  <ul class="wc-table">
+				<li>
+				  <div class="single-wc-content wow fadeInUp">
+				 
+					<span class="fa fa-server wc-icon"></span>
+					<h4 class="wc-tittle" style="border-bottom: 1px solid rgba(187, 187, 187, 0);">LIST SPACE</h4>
+			   
+				  </div>
+				</li>
+				<li>
+				  <div class="single-wc-content wow fadeInUp">
+					<span class="fa fa-usd wc-icon"></span>
+					<h4 class="wc-tittle" style="border-bottom: 1px solid rgba(187, 187, 187, 0);">PAY</h4>
+			   
+				  </div>
+				</li>
+				<li>
+				  <div class="single-wc-content wow fadeInUp">
+					<span class="fa fa-envelope-square wc-icon"></span>
+					<h4 class="wc-tittle" style="border-bottom: 1px solid rgba(187, 187, 187, 0);">GET NOTIFIED</h4>
+					<%--<p>At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>--%>
+				  </div>
+				</li>
+				<li>
+				  <div class="single-wc-content wow fadeInUp">
+					<span class="fa fa-cart-arrow-down wc-icon"></span>
+					<h4 class="wc-tittle" style="border-bottom: 1px solid rgba(187, 187, 187, 0);">GET PAID</h4>
+				  <%--  <p>At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>--%>
+				  </div>
+				</li>
+				
+			   <diV style="padding-top: 230px;">
+			 
+				<h2 class="tittle"  style="text-align:center !important;"><span>Parking Space Seekers</span></h2>
+				  </diV>
+				 <li>
+				  <div class="single-wc-content wow fadeInUp">
+				 
+					<span class="fa fa-map-marker wc-icon"></span>
+					<h4 class="wc-tittle">SEARCH PARKING SPACES</h4>
+				<p style="visibility:hidden;">At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>
+				  </div>
+				</li>
+				<li>
+				  <div class="single-wc-content wow fadeInUp">
+					<span class="fa fa-envelope wc-icon"></span>
+					<h4 class="wc-tittle">NOTIFY SPACE OWNER</h4>
+				<p style="visibility:hidden;">At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>
+				  </div>
+				</li>
+				<li>
+				  <div class="single-wc-content wow fadeInUp">
+					<span class="fa fa-exchange  -square wc-icon"></span>
+					<h4 class="wc-tittle">NEGOTIATION</h4>
+					<%--<p>At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>--%>
+				  </div>
+				</li>
+				<li>
+				  <div class="single-wc-content wow fadeInUp">
+					<span class="fa fa-thumbs-o-up wc-icon"></span>
+					<h4 class="wc-tittle">GET PARKING SPACE</h4>
+				  <%--  <p>At vero eos et accusamus et iusto odio in dignissimos ducimus voluptatum in delenatque </p>--%>
+				  </div>
+				</li>
+			  
+			  </ul>
+			</div>
+		   
+		  </div>
+		  <!-- End welcome area -->
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-md-12">
+		  <div class="about-area">
+			<div class="row">
+			  <div class="col-md-5 col-sm-6 col-xs-12">
+				<div class="about-left wow fadeInLeft">
+				  <img src="assets/images/about-img.jpg" alt="img">
+				  <%--<a class="introduction-btn" href="#">Introduction</a>--%>
+				</div>
+			  </div>
+			  <div class="col-md-7 col-sm-6 col-xs-12">
+				<div class="about-right wow fadeInRight">
+				  <div class="title-area">
+					<h2 class="tittle">About <span>ParkingMy.com</span> </h2>
+					<span class="tittle-line"></span>
+					<p>
+					 "It all started from a middle class family's dream of buying a car, which could not lasted long since it got dropped by having no parking space in their home, So we wanted to solve the problem of limited or no parking space for us and for those who are in same page as we are".<br /><br />
 
 Here we are bringing a platform where in people can list their spare parking space whether in a  garage, car park, private driveway or a school campus for rent and needy people can get parking space for rented on hourly, daily , weekly or monthly charge.<br /><br />
 
 We are a startup now and we are committed to solve the <span style="color: #00d999;font-weight: bold;">NoParkingSpaceAvailable</span> problem and we are also committed to expand this service to other metro cities.
-                    </p>
-                    <%--<div class="about-btn-area">
-                      <a href="#" class="button button-default" data-text="KNOW MORE"><span>KNOW MORE</span></a>
-                    </div>--%>                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+					</p>
+					<%--<div class="about-btn-area">
+					  <a href="#" class="button button-default" data-text="KNOW MORE"><span>KNOW MORE</span></a>
+					</div>--%>                    
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
   </section>
             <!-- End about section -->
 
@@ -942,70 +898,79 @@ We are a startup now and we are committed to solve the <span style="color: #00d9
 
             <!-- Start service section -->
             <section id="service">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="team-area">
-            <div class="title-area">
-              <h2 class="tittle">Our team</h2>
-              <span class="tittle-line"></span>
-             
-            </div>
-            <!-- Start team content -->
-            <div class="team-content">
-              <ul class="team-grid">
-                <li>
-                  <div class="team-item team-img-1 wow fadeInUp">
-                    <div class="team-info">
-                      <p> </p>
-                      <a href="https://www.facebook.com/galib.gaurav" target="_blank" ><span class="fa fa-facebook"></span></a>
-                      <a href="https://twitter.com/simplygalib" target="_blank" ><span class="fa fa-twitter"></span></a>
-                   
-                    </div>
-                  </div>
-                  <div class="team-address">
-                    <p>Galib Gaurav</p>
-                    <span>Founder</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="team-item team-img-2 wow fadeInUp">
-                    <div class="team-info">
-                  
-                      <a href="#"><span class="fa fa-facebook"></span></a>
-                      <a href="#"><span class="fa fa-twitter"></span></a>
-                      <a href="#"><span class="fa fa-pinterest"></span></a>
-                      <a href="#"><span class="fa fa-rss"></span></a>
-                    </div>
-                  </div>
-                  <div class="team-address">
-                    <p>Sumeet Jain</p>
-                    <span>Co-Founder</span>                  
-                  </div>
-                </li>
-                <li>
-                  <div class="team-item team-img-3 wow fadeInUp">
-                    <div class="team-info">
-                    
-                      <a href="#"><span class="fa fa-facebook"></span></a>
-                      <a href="#"><span class="fa fa-twitter"></span></a>
-                      <a href="#"><span class="fa fa-pinterest"></span></a>
-                      <a href="#"><span class="fa fa-rss"></span></a>
-                    </div>
-                  </div>
-                  <div class="team-address">
-                    <p>Alpesh Zanzrukiya</p>
-                    <span>Co-Founder</span>
-                  </div>
-                </li>
-                 
-              </ul>
-            </div>
-            <!-- End team content -->
-          </div>
-        </div>
-      </div>
-    </div>
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+		  <div class="team-area">
+			<div class="title-area">
+			  <h2 class="tittle">Our team</h2>
+			  <span class="tittle-line"></span>
+			 
+			</div>
+			<!-- Start team content -->
+			<div class="team-content">
+			  <ul class="team-grid">
+				<li>
+				  <div class="team-item team-img-1 wow fadeInUp">
+					<div class="team-info">
+					  <p> </p>
+					  <a href="https://www.facebook.com/galib.gaurav" target="_blank" ><span class="fa fa-facebook"></span></a>
+					  <a href="https://twitter.com/simplygalib" target="_blank" ><span class="fa fa-twitter"></span></a>
+				   
+					</div>
+				  </div>
+				  <div class="team-address">
+					<p>Galib Gaurav</p>
+					<span>Co-Founder</span>
+				  </div>
+				</li>
+				  <li>
+				  <div class="team-item team-img-0 wow fadeInUp">
+					<div class="team-info">
+					  <p> </p>
+					  <a href="https://www.facebook.com/gauravsitu" target="_blank" ><span class="fa fa-facebook"></span></a>
+					  <a href="https://twitter.com/krgaurav0209" target="_blank" ><span class="fa fa-twitter"></span></a>
+				   
+					</div>
+				  </div>
+				  <div class="team-address">
+					<p>Kumar Gaurav</p>
+					<span>Co-Founder</span>
+				  </div>
+				</li>
+				<li>
+				  <div class="team-item team-img-2 wow fadeInUp">
+					<div class="team-info">
+				  
+					  <a href="https://www.facebook.com/SumitJackSpero"><span class="fa fa-facebook"></span></a>
+				   </div>
+				  </div>
+				  <div class="team-address">
+					<p>Sumeet Jain</p>
+					<span>Developer</span>                  
+				  </div>
+				</li>
+				<li>
+				  <div class="team-item team-img-3 wow fadeInUp">
+					<div class="team-info">
+					
+					  <a href="https://www.facebook.com/zanzrukiya.alpesh"><span class="fa fa-facebook"></span></a>
+					  
+					</div>
+				  </div>
+				  <div class="team-address">
+					<p>Alpesh Zanzrukiya</p>
+					<span>Developer</span>
+				  </div>
+				</li>
+				 
+			  </ul>
+			</div>
+			<!-- End team content -->
+		  </div>
+		</div>
+	  </div>
+	</div>
   </section>
             <!-- End service section -->
 
@@ -1017,94 +982,96 @@ We are a startup now and we are committed to solve the <span style="color: #00d9
 
             <!-- Start Contact section -->
             <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-sm-6 col-xs-12">
-          <div class="contact-left wow fadeInLeft">
-            <h2>Contact with us</h2>
-            <address class="single-address">
-              <h4>Address:</h4>
-              <p>9th F Cross Road<br />
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-4 col-sm-6 col-xs-12">
+		  <div class="contact-left wow fadeInLeft">
+			<h2>Contact with us</h2>
+			<address class="single-address">
+			  <h4>Address:</h4>
+			  <p>9th F Cross Road<br />
 SBI Colony,1st Phase,J P Nagar<br />
 Bengaluru,Karnataka 560078</p>
-            </address>
-          
-             <address class="single-address">
-              <h4>Phone</h4>
-              <p>Phone Number: 9902738900</p>
-            </address>
-             <address class="single-address">
-              <h4>E-Mail</h4>
-              <p>Support: support@parkingmy.com</p>
-            </address>
-          </div>
-        </div>
-        <div class="col-md-8 col-sm-6 col-xs-12">
-          <div class="contact-right wow fadeInRight">
-            <h2>Send a message</h2>
-            <div  class="contact-form">
-              <div class="form-group">  
-              <asp:TextBox ID="txtusernam" runat="server" class="form-control" placeholder="Name"></asp:TextBox>
-              <asp:RequiredFieldValidator ValidationGroup="mesg" ControlToValidate="txtusernam" Display="None" ErrorMessage="Enter Name" ID="RequiredFieldValidator6" runat="server" ></asp:RequiredFieldValidator>
-              </div>
-              <div class="form-group">                
-              <asp:TextBox ID="txtmob" runat="server" class="form-control" placeholder="Mobile Number "></asp:TextBox>
-              <asp:RequiredFieldValidator ValidationGroup="mesg" ControlToValidate="txtmob" Display="None" ErrorMessage="Enter Mobile Number" ID="RequiredFieldValidator7" runat="server" ></asp:RequiredFieldValidator>
-              </div>  
-               <div class="form-group">                
-               <asp:TextBox ID="txtema" runat="server" class="form-control" placeholder=" Email Id"></asp:TextBox>
-               <asp:RequiredFieldValidator ValidationGroup="mesg" ControlToValidate="txtema" Display="None" ErrorMessage="Enter Email" ID="RequiredFieldValidator8" runat="server" ></asp:RequiredFieldValidator>
-              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" 
-                                                ControlToValidate="txtema" Display="None" ErrorMessage="Enter Valid Email Id" 
-                                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
-                                                ValidationGroup="mesg"></asp:RegularExpressionValidator>
-              </div>            
-              <div class="form-group">
-                <asp:TextBox ID="txtmsg" runat="server" class="form-control" placeholder="Message" Rows="7" TextMode="MultiLine"></asp:TextBox>
-                <asp:RequiredFieldValidator ValidationGroup="mesg" ControlToValidate="txtmsg" Display="None" ErrorMessage="Enter Message" ID="RequiredFieldValidator9" runat="server" ></asp:RequiredFieldValidator>
-              </div>
-          <asp:Button ID="Button2" runat="server" Text="SUBMIT" ValidationGroup="mesg" class="button bbbttt button-default dklll" onclick="Button1_Click"></asp:Button>
-           <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup="mesg" ShowMessageBox="true" ShowSummary="false" runat="server"></asp:ValidationSummary>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+			</address>
+		  
+			 <address class="single-address">
+			  <h4>Phone</h4>
+			  <p>Phone Number: 9448159227</p>
+			</address>
+			 <address class="single-address">
+			  <h4>E-Mail</h4>
+			  <p>Support: support@parkingmy.com</p>
+			</address>
+		  </div>
+		</div>
+		<div class="col-md-8 col-sm-6 col-xs-12">
+		  <div class="contact-right wow fadeInRight">
+			<h2>Send a message</h2>
+			<div  class="contact-form">
+			  <div class="form-group">  
+			  <asp:TextBox ID="txtusernam" runat="server" class="form-control" placeholder="Name"></asp:TextBox>
+			  <asp:RequiredFieldValidator ValidationGroup="mesg" ControlToValidate="txtusernam" Display="None" ErrorMessage="Enter Name" ID="RequiredFieldValidator6" runat="server" ></asp:RequiredFieldValidator>
+			  <asp:RegularExpressionValidator ID="RegularExpressionValidator11" Display="None" ValidationGroup="mesg" ValidationExpression="^[a-zA-Z0-9''-'\s]{5,25}$" runat="server" ControlToValidate="txtusernam" ErrorMessage="Enter Valid Name"></asp:RegularExpressionValidator>
+			  </div>
+			  <div class="form-group">                
+			  <asp:TextBox ID="txtmob" runat="server" class="form-control" placeholder="Mobile Number "></asp:TextBox>
+			  <asp:RequiredFieldValidator ValidationGroup="mesg" ControlToValidate="txtmob" Display="None" ErrorMessage="Enter Mobile Number" ID="RequiredFieldValidator7" runat="server" ></asp:RequiredFieldValidator>
+			  <asp:RegularExpressionValidator ID="RegularExpressionValidator12" Display="None" ValidationGroup="mesg" ValidationExpression="^[0-9]{10}$" runat="server" ControlToValidate="txtmob" ErrorMessage="Enter Valid 10 Digit Number"></asp:RegularExpressionValidator>
+			  </div>  
+			   <div class="form-group">                
+			   <asp:TextBox ID="txtema" runat="server" class="form-control" placeholder=" Email Id"></asp:TextBox>
+			   <asp:RequiredFieldValidator ValidationGroup="mesg" ControlToValidate="txtema" Display="None" ErrorMessage="Enter Email" ID="RequiredFieldValidator8" runat="server" ></asp:RequiredFieldValidator>
+			  <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" 
+												ControlToValidate="txtema" Display="None" ErrorMessage="Enter Valid Email Id" 
+												ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+												ValidationGroup="mesg"></asp:RegularExpressionValidator>
+			  </div>            
+			  <div class="form-group">
+				<asp:TextBox ID="txtmsg" runat="server" class="form-control" placeholder="Message" Rows="7" TextMode="MultiLine"></asp:TextBox>
+				<asp:RequiredFieldValidator ValidationGroup="mesg" ControlToValidate="txtmsg" Display="None" ErrorMessage="Enter Message" ID="RequiredFieldValidator9" runat="server" ></asp:RequiredFieldValidator>
+			  </div>
+		  <asp:Button ID="Button2" runat="server" Text="SUBMIT" ValidationGroup="mesg" class="button bbbttt button-default dklll" onclick="Button1_Click"></asp:Button>
+		   <asp:ValidationSummary ID="ValidationSummary3" ValidationGroup="mesg" ShowMessageBox="true" ShowSummary="false" runat="server"></asp:ValidationSummary>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
   </section>
             <!-- End Contact section -->
             <!-- Start Google Map -->
             <section id="google-map">
   
-  <iframe src="https://www.google.com/maps/d/embed?mid=zTD7RabWeJ00.kgWgroJRyaAc" width="100%" height="500"></iframe>
-  </section>
+  <%--<iframe src="https://www.google.com/maps/d/embed?mid=zTD7RabWeJ00.kgWgroJRyaAc" width="100%" height="500"></iframe>--%>
+			 <iframe width="100%" height="500" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJFRxc2m8VrjsRwS8g4zWEdLo&key=AIzaSyCwbt61m8Mpefk04QjCIJEeQ8AWzpCIy8Y" allowfullscreen></iframe>  </section>
             <!-- End Google Map -->
 
             <!-- Start Footer -->
             <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="footer-top-area">             
-                <a class="footer-logo" href="#"><img src="assets/images/Logo (1).png"  style="
-    margin-top: 12px;
-    /* top: 12px; */
+	<div class="footer-top">
+	  <div class="container">
+		<div class="row">
+		  <div class="col-md-12">
+			<div class="footer-top-area">             
+				<a class="footer-logo" href="#"><img src="assets/images/Logo (1).png"  style="
+	margin-top: 12px;
+	/* top: 12px; */
 " alt="Logo"></a>              
-              <div class="footer-social">
-                 <a class="facebook" href="https://www.facebook.com/parkingmy/" target="_blank" ><span class="fa fa-facebook" style="line-height: 47px;"></span></a>
-                <a class="twitter" href="https://twitter.com/ParkingMyCom"target="_blank"  ><span class="fa fa-twitter" style="line-height: 47px;"></span></a>
-                <a class="google-plus" href="https://plus.google.com/109417580993695308682" target="_blank" ><span class="fa fa-google-plus" style="line-height: 47px;"></span></a>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-    <p><a href="Privacypolicy.aspx">Privacy Policy</a><span> , </span><a href="terms_Condition.aspx">Terms and condition </a></p>
-      <p>Developed by <a href="#" >Connected Skills</a></p>
-    </div>
+			  <div class="footer-social">
+				 <a class="facebook" href="https://www.facebook.com/parkingmy/" target="_blank" ><span class="fa fa-facebook" style="line-height: 47px;"></span></a>
+				<a class="twitter" href="https://twitter.com/ParkingMyCom"target="_blank"  ><span class="fa fa-twitter" style="line-height: 47px;"></span></a>
+				<a class="google-plus" href="https://plus.google.com/109417580993695308682" target="_blank" ><span class="fa fa-google-plus" style="line-height: 47px;"></span></a>
+			  
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div class="footer-bottom">
+	<p><a href="Privacypolicy.aspx">Privacy Policy</a><span> , </span><a href="terms_Condition.aspx">Terms and condition </a></p>
+	  <p>Developed by <a href="#" >Connected Skills</a></p>
+	</div>
   </footer>
             <!-- End Footer -->
 
@@ -1152,11 +1119,12 @@ Bengaluru,Karnataka 560078</p>
             </div>
         </div>
     </div>
+
     <!-- initialize jQuery Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--%>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.js"></script>
+
     <!-- Slick Slider -->
     <script type="text/javascript" src="assets/js/slick.js"></script>
     <!-- Counter -->
