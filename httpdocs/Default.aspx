@@ -236,6 +236,9 @@
                 width: 100% !important;
             }
         }
+        .subscribe-form-input-group {
+            margin-top: 5px;
+        }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
@@ -1119,6 +1122,36 @@ Bengaluru,Karnataka 560078</p>
             </div>
         </div>
     </div>
+    <!--START: Subscribe Modal Coding -->
+    <div id="subscribeModal" class="modal fade">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Newsletter</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Subscribe and Stay tuned.</p>
+                    <form class="subscribe-form">
+                        <div class="input-group subscribe-form-input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </span>
+                                <input type="email" class="form-control" id="subscribe-email" placeholder="your@email.com" required="required" />
+                        </div>
+                        <div class="input-group subscribe-form-input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-phone"></span>
+                                </span>
+                                <input type="text" class="form-control" id="subscribe-contactNumber" placeholder="999 9999 9999" required="required"/>
+                        </div>
+                        <button type="button" id="subscribe-btn" class="btn-sm btn-primary subscribe-form-input-group">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END: Subscribe Modal Coding -->
 
     <!-- initialize jQuery Library -->
     <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--%>
