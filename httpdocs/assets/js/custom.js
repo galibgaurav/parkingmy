@@ -267,6 +267,24 @@ jQuery(function($){
         }
       }
     );
-    wow.init();
+	wow.init();
+
+    /* ----------------------------------------------------------- */
+    /*  14. Subscribe modal opening
+	/* ----------------------------------------------------------- */
+	jQuery(document).ready(function () {
+	    setTimeout(function () {	        
+	        jQuery('#subscribe-btn').on('click', function () {
+	            //TODO : Add subscrobe login here 
+	            email = document.getElementById('subscribe-email').value;
+	            contactNumber = document.getElementById('subscribe-contactNumber').value;
+                //Delete this 
+	            console.log(email + " : " + contactNumber);
+	            //Delete till this
+	            $('#subscribeModal').modal('toggle');
+	        });
+	        $('#subscribeModal').modal('show');
+	    }, 3000)
+	});
 
 });
