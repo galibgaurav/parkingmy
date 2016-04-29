@@ -14,7 +14,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Windows.Forms;
 using System.Collections;
-
+using System.Web.Services;
 public partial class _Default : System.Web.UI.Page
 {
     string ss, xxx, sss;
@@ -25,7 +25,7 @@ public partial class _Default : System.Web.UI.Page
 
     //DataBase Connection 
     SqlConnection sconn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
+    static SqlConnection sconn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
     private string PopUpMessageCreator(string msgType, string message)
     {
         //$('#basicModal').modal(options);
@@ -95,6 +95,30 @@ public partial class _Default : System.Web.UI.Page
             // Pass the error on to the default global handler
         }
     }
+    [WebMethod]
+    //public static void subscribebtn_Click(string email, string contactNumber)
+    public static bool subscribebtn_Click(string email, string contactNumber)
+    {
+        try{
+                if (sconn1.State == ConnectionState.Open)
+                {
+                    sconn1.Close();
+                }
+                sconn1.Open();
+
+                SqlCommand cmd = new SqlCommand("insert into Admin_Subscriber(Mobile_Number,Email_Id) values (@Mobile_Number,@Email_Id)", sconn1);
+
+                cmd.Parameters.AddWithValue("@Mobile_Number", contactNumber);
+                cmd.Parameters.AddWithValue("@Email_Id", email);
+                cmd.ExecuteNonQuery();
+                sconn1.Close();
+            return true;
+            }
+        catch(Exception ex)
+            {
+          return false;
+            }
+        }
 
     protected void mercy(object sender, EventArgs e)
     {
@@ -116,7 +140,8 @@ public partial class _Default : System.Web.UI.Page
         da1.Fill(dt1);
         if (dt1.Rows.Count > 0)
         {
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Email ID Is Already Registered')", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Email ID is Already Registered.');}</script>", false);
+            //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Email ID Is Already Registered')", true);
 
         }
         else
@@ -192,9 +217,10 @@ public partial class _Default : System.Web.UI.Page
             Session["Email_Id"] = txtemail.Text;
 
             cmd.ExecuteNonQuery();
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Successfully Register')", true);
-
             sconn.Close();
+            //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Successfully Register')", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Successfully Register');}</script>", false);
+           
 
             string abbbb = "U" + abbb;
             string url = null;
@@ -230,7 +256,14 @@ public partial class _Default : System.Web.UI.Page
             //   ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Successfully Register')", true);
 
             sconn.Close();
-            //SendRegistrationMail();
+            //MailMessage mm = new MailMessage("support@parkingmy.com", "" + txtemail2.Text + "");
+            //mm.Subject = "ParkingMy.com:: Welcome To ParkingMy.com ";
+            //mm.Body = "<html><body> <table cellspacing='0' cellpadding='0' width='100%' border='0' bgcolor='#AED66A'>  <tbody>  <tr>    <td height='42'></td>  </tr>  <tr>    <td>      <table cellspacing='0' cellpadding='0' width='600' border='0' bgcolor='#ffffff' align='center'>        <tbody>        <tr>          <td height='1' bgcolor='#d6d6d6' style='line-height:1px' colspan='3'></td>        </tr>        <tr>          <td width='1' bgcolor='#d6d6d6'></td>          <td>            <table cellspacing='0' cellpadding='0' width='598' border='0' align='center'>              <tbody>              <tr>                <td height='20' colspan='4'></td>              </tr>              <tr>                <td width='417' colspan='2'></td>                <td width='165' style='text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:#6ac451'>                  <img src='http://parking.unitechitsolution.in/newlogo.png' class='CToWUd'>                </td>                <td width='16'></td>              </tr>              <tr>                <td height='17' colspan='4'></td>              </tr>              <tr>                <td height='1' bgcolor='#d6d6d6' style='line-height:1px' colspan='4'></td>              </tr>              <tr>                <td height='21' colspan='4'></td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666' colspan='3'>                  <b>                    Dear <i>" + txtname2.Text + "</i>,<br><br>                  </b>                </td>              </tr>              <tr>                <td height='8' colspan='4'></td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666;line-height:32px' colspan='3'>                  Welcome to the ParkingMy Family. We are delighted to have you as a Member                  and hope this relationship will be mutually beneficial.                  <br>                </td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666;line-height:32px' colspan='3'>                  Please find in this email your login credentials for our User panel.                  <br>                </td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#000000;line-height:32px' colspan='3'>                  Login: " + txtemail2.Text + "                </td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#000000;line-height:32px' colspan='3'>Password: " + Session["pass"].ToString() + "                </td>              </tr>              <tr>                <td height='20' colspan='4'></td>              </tr>            <tr>                <td height='20' colspan='4'></td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666;line-height:32px' colspan='3'>                  We endeavour to keep our processes as transparent as possible and are constantly                  adding new features to our panel.                  <br>                </td>              </tr>              <tr>                <td height='20' colspan='4'></td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666;line-height:32px' colspan='3'>                  For added convenience and better transparency, we kindly request you                  to submit all your profile and parking details only through our panel.                  <br>                </td>              </tr>              <tr>                <td height='20' colspan='4'></td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666;line-height:32px' colspan='3'>                  We have assigned a dedicated account manager to serve your account and GALIB GAURAV is your point of contact.                  <br>                </td>              </tr>              <tr>                <td height='20' colspan='4'></td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666;line-height:32px' colspan='3'>                  He/She can be reached at +91-9448159227 /<a href='mailto:support@parkingmy.com' target='_blank'>support@parkingmy.com<wbr></a>.                  <br>                </td>              </tr>              <tr>                <td height='20' colspan='4'></td>              </tr>                         <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#666666;line-height:32px' colspan='3'>                  We value your relationship and hope to serve you better.                  <br>                </td>              </tr>              <tr>                <td height='20' colspan='4'></td>              </tr>              <tr>                <td height='20' colspan='4'></td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#000;line-height:24px' colspan='3'>                  Regards,                </td>              </tr>              <tr>                <td width='24'></td>                <td style='font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#000000;line-height:24px' colspan='3'>                  ParkingMy Team                </td>              </tr>              <tr>                <td height='32' colspan='4'></td>              </tr>              <tr>                <td height='1' bgcolor='#d6d6d6' style='line-height:1px' colspan='4'></td>              </tr>              </tbody>            </table>         </td>          <td width='1' bgcolor='#d6d6d6'></td>        </tr>        <tr>          <td height='1' bgcolor='#d6d6d6' style='line-height:1px' colspan='3'></td>        </tr>        </tbody>      </table>    </td>  </tr>  <tr>    <td height='42'></td>  </tr>  </tbody></table>  </body></html>";
+
+            //mm.IsBodyHtml = true;
+            //SmtpClient smtp = new SmtpClient("relay-hosting.secureserver.net", 25);
+            //ServicePointManager.ServerCertificateValidationCallback = delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+            //smtp.Send(mm);
            
             txtname.Text = "";
             txtuserpass.Text = "";
@@ -281,8 +314,8 @@ public partial class _Default : System.Web.UI.Page
         da1.Fill(dt1);
         if (dt1.Rows.Count > 0)
         {
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Email ID Is Already Registered')", true);
-
+            //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Email ID Is Already Registered')", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Email ID is Already Registered.');}</script>", false);
         }
         else
         {
@@ -295,7 +328,7 @@ public partial class _Default : System.Web.UI.Page
             string Response_f = null;
             string strmsg1 = null;
 
-            Session["pass"] = txtuserpass22.Text;
+            Session["pass"] = txtcpass2.Text;
             // strmsg1 = " " + finalString + " .";
 
             url = "http://sms.unitechitsolution.in/vendorsms/pushsms.aspx?user=parkingmy&password=parkingmy&msisdn=" + txtmobile2.Text + "&sid=PARKMY&msg=Thank you for registration in ParkingMy.com. Your verification code is " + abbbb + "&fl=0&gwid=2";
@@ -420,8 +453,8 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Entered OTP is incorrect')", true);
-
+            //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Entered OTP is incorrect')", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Entered OTP is incorrect');}</script>", false);
         }
     }
     void generate()
@@ -512,12 +545,14 @@ public partial class _Default : System.Web.UI.Page
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Email Id or Password Incorrect');", true);
+                //ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Email Id or Password Incorrect');", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Email Id or Password Incorrect');}</script>", false);
             }
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Email id or password incorrect)", true);
+            //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Email id or password incorrect)", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Email id or password incorrect');}</script>", false);
         }
 
         sconn.Close();
@@ -561,13 +596,15 @@ public partial class _Default : System.Web.UI.Page
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Email Id or Password Incorrect');", true);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Email Id or Password Incorrect');}</script>", false);
+                    //ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Email Id or Password Incorrect');", true);
                 }
         }
         else
         {
             //ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "document.getElementById('dialogBtn').click()"+PopUpMessageCreator("error", "Email Id or Password Incorrect"), true);
-            ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Email id or password incorrect.')", true);
+            //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Email id or password incorrect.')", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Email Id or Password Incorrect');}</script>", false);
         }
 
         sconn.Close();
@@ -579,32 +616,20 @@ public partial class _Default : System.Web.UI.Page
          //if (Session["update"].ToString() == ViewState["update"].ToString())
          //{
              Session["pname"] = TextBox1.Text;
-
+           
              string start = Request.Form["start"].ToString();
              string end = Request.Form["end"].ToString();
 
-             Session["la"] = start;
-             Session["lo"] = end;
+            
              if (String.IsNullOrEmpty(start) || String.IsNullOrEmpty(end))
              {
-                 // ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "$('#myModalTitle1').text('Parking area status !');$('#myModalMessage2').text('Sorry no parking area available for the selected region.');document.getElementById('btnSuccess').click();", true);
-                 //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Sorry no parking area available for the selected region.')", true);
+                 //ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Please enter valid location in search box.');}</script>", false);
+                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Please enter valid location in search box.');}</script>", false);
              }
              else
              {
                  GetAvailableParkingSpaceID(start, end);
              }
-
-         //    // After the event/ method, again update the session 
-
-         //    Session["update"] = Server.UrlEncode(System.DateTime.Now.ToString());
-         //}
-         //else // If Page Refreshed
-         //{
-         //    // Do nothing 
-         //}
-
-       
 
     }
 
@@ -637,8 +662,7 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            //ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "$('#myModalTitle1').text('Parking area status !');$('#myModalMessage2').text('Sorry no parking area available for the selected region.');document.getElementById('btnSuccess').click();", true);
-            //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Sorry no parking area available for the selected region.')", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Sorry no parking area available for the selected region.');}</script>", false);
         }
     }
 
@@ -662,8 +686,9 @@ public partial class _Default : System.Web.UI.Page
         txtmob.Text = "";
         txtema.Text = "";
         txtmsg.Text = "";
-        ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Successfully Send Message')", true);
-        sconn.Close();
+        //ScriptManager.RegisterStartupScript(this, typeof(string), "alert", "alert('Successfully Send Message')", true);
+
+        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Successfully send message');}</script>", false);
     }
 
 
@@ -710,7 +735,8 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Email Id is Incorrect');", true);
+            //ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Email Id is Incorrect');", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Email Id is incorrect');}</script>", false);
         }
     }
     protected void Button7_Click2(object sender, EventArgs e)
@@ -745,7 +771,8 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Email Id is Incorrect');", true);
+            //ScriptManager.RegisterStartupScript(this, typeof(string), "Alert", "alert('Email Id is Incorrect');", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Message", "<script type=text/javascript>window.onload = function(){alert('Email Id is incorrect');}</script>", false);
         }
     }
     protected void Button8_Click(object sender, EventArgs e)

@@ -23,268 +23,305 @@
 	
 **/
 
-jQuery(function($){
+jQuery(function ($) {
 
 
-	/* ----------------------------------------------------------- */
-	/*  1. HEADER CONTENT SLIDE (SLICK SLIDER)
-	/* ----------------------------------------------------------- */
-
-	jQuery('.header-slide').slick({
-		dots: false,
-		infinite: true,
-		speed: 500,
-		arrows:false, 
-		autoplay: true,     
-      	slidesToShow: 1,
-		slide: 'span',
-		fade: true,
-		cssEase: 'linear'
-	});
-
-	/* ----------------------------------------------------------- */
-	/*  2. FIXED MENU
+    /* ----------------------------------------------------------- */
+    /*  1. HEADER CONTENT SLIDE (SLICK SLIDER)
 	/* ----------------------------------------------------------- */
 
+    jQuery('.header-slide').slick({
+        dots: false,
+        infinite: true,
+        speed: 500,
+        arrows: false,
+        autoplay: true,
+        slidesToShow: 1,
+        slide: 'span',
+        fade: true,
+        cssEase: 'linear'
+    });
 
-	jQuery(window).bind('scroll', function () {
-    if ($(window).scrollTop() > 700) {
-        $('.main-navbar').addClass('navbar-fixed-top');
-        $('.logo').addClass('logo-compressed');
-        $('.main-nav li a').addClass('less-padding');
-        $('.search-area').css('height','44');
-        $('.search-area input[type="text"]').css('top','35%');
-        
-        
-	    } else {
-	        $('.main-navbar').removeClass('navbar-fixed-top');
-	        $('.logo').removeClass('logo-compressed');
-	        $('.main-nav li a').removeClass('less-padding');
-	        $('.search-area').css('height','60');
-	        $('.search-area input[type="text"]').css('top','11%');
-	    }
-	});
-
-	/* ----------------------------------------------------------- */
-	/*  3. COUNTER
+    /* ----------------------------------------------------------- */
+    /*  2. FIXED MENU
 	/* ----------------------------------------------------------- */
 
-	jQuery('.counter').counterUp({
+
+    jQuery(window).bind('scroll', function () {
+        if ($(window).scrollTop() > 700) {
+            $('.main-navbar').addClass('navbar-fixed-top');
+            $('.logo').addClass('logo-compressed');
+            $('.main-nav li a').addClass('less-padding');
+            $('.search-area').css('height', '44');
+            $('.search-area input[type="text"]').css('top', '35%');
+
+
+        } else {
+            $('.main-navbar').removeClass('navbar-fixed-top');
+            $('.logo').removeClass('logo-compressed');
+            $('.main-nav li a').removeClass('less-padding');
+            $('.search-area').css('height', '60');
+            $('.search-area input[type="text"]').css('top', '11%');
+        }
+    });
+
+    /* ----------------------------------------------------------- */
+    /*  3. COUNTER
+	/* ----------------------------------------------------------- */
+
+    jQuery('.counter').counterUp({
         delay: 10,
         time: 1000
     });
 
 
-	/* ----------------------------------------------------------- */
-	/*  4. TESTIMONIAL SLIDE(SLICK SLIDER)
-	/* ----------------------------------------------------------- */
-
-	jQuery('.testimonial-slider').slick({
-		dots: false,
-		infinite: true,
-		speed: 500,
-		arrows:true, 
-		autoplay: true,     
-      	slidesToShow: 1,
-		slide: 'div',		
-		cssEase: 'linear'
-	});
-
-	/* ----------------------------------------------------------- */
-	/*  5. CLIENT SLIDE (SLICK SLIDER)
+    /* ----------------------------------------------------------- */
+    /*  4. TESTIMONIAL SLIDE(SLICK SLIDER)
 	/* ----------------------------------------------------------- */
 
-	$('.client-table').slick({
-	  dots: false,
-	  infinite: true,
-	  arrows:false, 
-	  speed: 300,
-	  autoplay: true,     
-	  slidesToShow: 6,
-	  slidesToScroll: 6,
-	  responsive: [
-	    {
-	      breakpoint: 1024,
-	      settings: {
-	        slidesToShow: 4,
-	        slidesToScroll: 4,
-	        infinite: true,
-	        dots: true
-	      }
-	    },
-	    {
-	      breakpoint: 600,
-	      settings: {
-	        slidesToShow: 2,
-	        slidesToScroll: 2
-	      }
-	    },
-	    {
-	      breakpoint: 480,
-	      settings: {
-	        slidesToShow: 1,
-	        slidesToScroll: 1
-	      }
-	    }
-	    // You can unslick at a given breakpoint now by adding:
-	    // settings: "unslick"
-	    // instead of a settings object
-	  ]
-	});
+    jQuery('.testimonial-slider').slick({
+        dots: false,
+        infinite: true,
+        speed: 500,
+        arrows: true,
+        autoplay: true,
+        slidesToShow: 1,
+        slide: 'div',
+        cssEase: 'linear'
+    });
 
-	/* ----------------------------------------------------------- */
-	/*  6. SCROLL TOP BUTTON
+    /* ----------------------------------------------------------- */
+    /*  5. CLIENT SLIDE (SLICK SLIDER)
 	/* ----------------------------------------------------------- */
 
-	//Check to see if the window is top if not then display button
+    $('.client-table').slick({
+        dots: false,
+        infinite: true,
+        arrows: false,
+        speed: 300,
+        autoplay: true,
+        slidesToShow: 6,
+        slidesToScroll: 6,
+        responsive: [
+          {
+              breakpoint: 1024,
+              settings: {
+                  slidesToShow: 4,
+                  slidesToScroll: 4,
+                  infinite: true,
+                  dots: true
+              }
+          },
+          {
+              breakpoint: 600,
+              settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2
+              }
+          },
+          {
+              breakpoint: 480,
+              settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+              }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+    });
 
-	  jQuery(window).scroll(function(){
-	    if ($(this).scrollTop() > 300) {
-	      $('.scrollToTop').fadeIn();
-	    } else {
-	      $('.scrollToTop').fadeOut();
-	    }
-	  });
-	   
-	  //Click event to scroll to top
-
-	  jQuery('.scrollToTop').click(function(){
-	    $('html, body').animate({scrollTop : 0},800);
-	    return false;
-	  });
-
+    /* ----------------------------------------------------------- */
+    /*  6. SCROLL TOP BUTTON
 	/* ----------------------------------------------------------- */
-	/*  7. MENU SMOOTH SCROLLING
-	/* ----------------------------------------------------------- */ 
-	
-		//MENU SCROLLING WITH ACTIVE ITEM SELECTED
 
-		// Cache selectors
-		var lastId,
-		topMenu = $(".main-nav"),
-		topMenuHeight = topMenu.outerHeight()+13,
-		// All list items
-		menuItems = topMenu.find("a"),
-		// Anchors corresponding to menu items
-		scrollItems = menuItems.map(function(){
-		  var item = $($(this).attr("href"));
-		  if (item.length) { return item; }
-		});
+    //Check to see if the window is top if not then display button
 
-		// Bind click handler to menu items
-		// so we can get a fancy scroll animation
-		menuItems.click(function(e){
-		  var href = $(this).attr("href"),
-		      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+32;
-		  jQuery('html, body').stop().animate({ 
-		      scrollTop: offsetTop
-		  }, 1500);
-		  e.preventDefault();
-		});
+    jQuery(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.scrollToTop').fadeIn();
+        } else {
+            $('.scrollToTop').fadeOut();
+        }
+    });
 
-		// Bind to scroll
-		jQuery(window).scroll(function(){
-		   // Get container scroll position
-		   var fromTop = $(this).scrollTop()+topMenuHeight;
-		   
-		   // Get id of current scroll item
-		   var cur = scrollItems.map(function(){
-		     if ($(this).offset().top < fromTop)
-		       return this;
-		   });
-		   // Get the id of the current element
-		   cur = cur[cur.length-1];
-		   var id = cur && cur.length ? cur[0].id : "";
-		   
-		   if (lastId !== id) {
-		       lastId = id;
-		       // Set/remove active class
-		       menuItems
-		         .parent().removeClass("active")
-		         .end().filter("[href=#"+id+"]").parent().addClass("active");
-		   }           
-		})
+    //Click event to scroll to top
 
+    jQuery('.scrollToTop').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 800);
+        return false;
+    });
+
+    /* ----------------------------------------------------------- */
+    /*  7. MENU SMOOTH SCROLLING
 	/* ----------------------------------------------------------- */
-	/*  8. MIXIT FILTER ( FOR PORTFOLIO ) 
-	/* ----------------------------------------------------------- */ 
 
-		jQuery(function(){
-		    $('#mixit-container').mixItUp();
-		});
+    //MENU SCROLLING WITH ACTIVE ITEM SELECTED
 
-	/* ----------------------------------------------------------- */
-	/*  9. FANCYBOX ( FOR PORTFOLIO POPUP VIEW ) 
-	/* ----------------------------------------------------------- */ 
-	    
-		jQuery(document).ready(function() {
-			$(".fancybox").fancybox();
-		});	 
+    // Cache selectors
+    var lastId,
+    topMenu = $(".main-nav"),
+    topMenuHeight = topMenu.outerHeight() + 13,
+    // All list items
+    menuItems = topMenu.find("a"),
+    // Anchors corresponding to menu items
+    scrollItems = menuItems.map(function () {
+        var item = $($(this).attr("href"));
+        if (item.length) { return item; }
+    });
 
-	/* ----------------------------------------------------------- */
-	/*  10. MOBILE MENU CLOSE 
-	/* ----------------------------------------------------------- */ 
+    // Bind click handler to menu items
+    // so we can get a fancy scroll animation
+    menuItems.click(function (e) {
+        var href = $(this).attr("href"),
+            offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 32;
+        jQuery('html, body').stop().animate({
+            scrollTop: offsetTop
+        }, 1500);
+        e.preventDefault();
+    });
 
-	jQuery('.navbar-nav').on('click', 'li a', function() {
-	  $('.in').collapse('hide');
-	});
+    // Bind to scroll
+    jQuery(window).scroll(function () {
+        // Get container scroll position
+        var fromTop = $(this).scrollTop() + topMenuHeight;
 
-	/* ----------------------------------------------------------- */
-	/*  11. PRELOADER 
-	/* ----------------------------------------------------------- */ 
+        // Get id of current scroll item
+        var cur = scrollItems.map(function () {
+            if ($(this).offset().top < fromTop)
+                return this;
+        });
+        // Get the id of the current element
+        cur = cur[cur.length - 1];
+        var id = cur && cur.length ? cur[0].id : "";
 
-	jQuery(window).load(function() { // makes sure the whole site is loaded
-      $('.loader').fadeOut(); // will first fade out the loading animation
-      $('#preloader').delay(100).fadeOut('slow'); // will fade out the white DIV that covers the website.
-      $('body').delay(100).css({'overflow':'visible'});
+        if (lastId !== id) {
+            lastId = id;
+            // Set/remove active class
+            menuItems
+              .parent().removeClass("active")
+              .end().filter("[href=#" + id + "]").parent().addClass("active");
+        }
     })
 
     /* ----------------------------------------------------------- */
-	/*  12. INSTAGRAM SLIDER (SLICK SLIDER)
-	/* ----------------------------------------------------------- */ 
-
-	jQuery('.instagram-feed').slick({
-		dots: true,
-		infinite: true,
-		speed: 500,
-		arrows:true, 
-		autoplay: true,     
-      	slidesToShow: 1,
-		slide: 'div',		
-		cssEase: 'linear'
-	});
-
+    /*  8. MIXIT FILTER ( FOR PORTFOLIO ) 
 	/* ----------------------------------------------------------- */
-	/*  13. WOW ANIMATION
-	/* ----------------------------------------------------------- */ 
 
-	wow = new WOW(
+    jQuery(function () {
+        $('#mixit-container').mixItUp();
+    });
+
+    /* ----------------------------------------------------------- */
+    /*  9. FANCYBOX ( FOR PORTFOLIO POPUP VIEW ) 
+	/* ----------------------------------------------------------- */
+
+    jQuery(document).ready(function () {
+        $(".fancybox").fancybox();
+    });
+
+    /* ----------------------------------------------------------- */
+    /*  10. MOBILE MENU CLOSE 
+	/* ----------------------------------------------------------- */
+
+    jQuery('.navbar-nav').on('click', 'li a', function () {
+        $('.in').collapse('hide');
+    });
+
+    /* ----------------------------------------------------------- */
+    /*  11. PRELOADER 
+	/* ----------------------------------------------------------- */
+
+    jQuery(window).load(function () { // makes sure the whole site is loaded
+        $('.loader').fadeOut(); // will first fade out the loading animation
+        $('#preloader').delay(100).fadeOut('slow'); // will fade out the white DIV that covers the website.
+        $('body').delay(100).css({ 'overflow': 'visible' });
+    })
+
+    /* ----------------------------------------------------------- */
+    /*  12. INSTAGRAM SLIDER (SLICK SLIDER)
+	/* ----------------------------------------------------------- */
+
+    jQuery('.instagram-feed').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        arrows: true,
+        autoplay: true,
+        slidesToShow: 1,
+        slide: 'div',
+        cssEase: 'linear'
+    });
+
+    /* ----------------------------------------------------------- */
+    /*  13. WOW ANIMATION
+	/* ----------------------------------------------------------- */
+
+    wow = new WOW(
       {
-        animateClass: 'animated',
-        offset:       100,
-        callback:     function(box) {
-          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
-        }
+          animateClass: 'animated',
+          offset: 100,
+          callback: function (box) {
+              console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+          }
       }
     );
-	wow.init();
+    wow.init();
 
     /* ----------------------------------------------------------- */
     /*  14. Subscribe modal opening
 	/* ----------------------------------------------------------- */
-	jQuery(document).ready(function () {
-	    setTimeout(function () {	        
-	        jQuery('#subscribe-btn').on('click', function () {
-	            //TODO : Add subscrobe login here 
-	            email = document.getElementById('subscribe-email').value;
-	            contactNumber = document.getElementById('subscribe-contactNumber').value;
-                //Delete this 
-	            console.log(email + " : " + contactNumber);
-	            //Delete till this
-	            $('#subscribeModal').modal('toggle');
-	        });
-	        $('#subscribeModal').modal('show');
-	    }, 3000)
-	});
+    //
+    jQuery(document).ready(function () {
+
+        jQuery('#subscribebtn1').on('click', function () {
+
+            email = document.getElementById('subscribeemail').value;
+            contactNumber = document.getElementById('subscribecontactnumber').value;
+            var reg1 = /\S+@\S+\.\S+/;;
+            var reg2 = /^[0-9]{10}$/;
+            if (reg1.test(email)) {
+                if (reg2.test(contactNumber)) {
+                    $.ajax({
+                        type: "POST", url: "Default.aspx/subscribebtn_Click", data: "{'email':'" + email + "','contactNumber':'" + contactNumber + "'}",
+                        contentType: "application/json; charset=utf-8", dataType: "json",
+                        success: function (response) {
+                            $('#subscribeModal').modal('toggle');
+                            $('#subscribeemail').val('');
+                            $('#subscribecontactnumber').val('');
+                            alert('subscription successful');
+                        },
+                        failure: function (response) {
+                            $('#subscribeModal').modal('toggle');
+                            $('#subscribeemail').val('');
+                            $('#subscribecontactnumber').val('');
+
+                            alert('subscription failed, try again or call ParkingMy support');
+
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            $('#subscribeModal').modal('toggle');
+                            $('#subscribeemail').val('');
+                            $('#subscribecontactnumber').val('');
+
+                            alert('Something went wrong, try again or call ParkingMy support');
+                        }
+                    });
+
+                }
+                else {
+                    alert('Enter valid mobile number');
+                  
+                }
+            }
+            else {
+                alert('Enter valid email address');
+             
+            }
+           
+        });
+        //$('#subscribeModal').modal('show');
+    });
 
 });

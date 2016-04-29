@@ -138,7 +138,7 @@
         .pac-container.pac-logo::after {
             display: none;
         }
-    
+
         .fontt {
             font-size: 60px !important;
         }
@@ -236,6 +236,7 @@
                 width: 100% !important;
             }
         }
+
         .subscribe-form-input-group {
             margin-top: 5px;
         }
@@ -271,467 +272,462 @@
             }
 
         }
-        function GeoCoordinate() {
-            var geocoder = new google.maps.Geocoder();
-            var strSearch = document.getElementById('TextBox1').value;
-            if (strSearch == null || strSearch == '') {
-                alert('Please select a location before searching.');
-            }
-            else {
-                geocoder.geocode({ 'address': strSearch }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        var x = results[0].geometry.location.lat();
-                        var y = results[0].geometry.location.lng();
-                        console.log('x:' + x);
-                        console.log('y:' + y);
-                        debugger;
-                        document.getElementById('TextBox4').value = y;
-                        document.getElementById('start').value = x;
-                        document.getElementById('end').value = y;
-                        // if()
-                        return true;
-
-                    }
-                });
-            }
+        function showModel() {
+            $('#subscribeModal').modal('show');
         }
     </script>
-    
+
+
 </head>
 <body>
-   <marquee >--Site is under beta testing.-- --Register your parking space before 28th June 2016 and win shoppers stop gift card.--</marquee>
-     
-    <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
-        <div>
-
-            <a class="scrollToTop" href="#"><i class="fa fa-chevron-up" style="line-height: 50px;"></i></a>
-            <!-- END SCROLL TOP BUTTON -->
-
-            <!-- Start header section -->
-
-            <div class="header-inner">
-                <!-- Header image -->
-                <img src="assets/images/header-bg.jpg" class="imghh" alt="img">
-                <div class="header-overlay">
-                    <div class="header-content">
-                        <!-- Start header content slider -->
-                        <h2 class="header-slide fontt">
-                            <img src="assets/images/Logo%20(1).png" />
-                            <span class="jack12" style="font-style: italic; font-family: monospace;">A Place To Find/Rent Parking Space.</span>
-                        </h2>
-
-
-                        <div class="header-btn-area" style="margin-top: 0px;">
-
-                            <asp:Panel ID="Panel14" runat="server" DefaultButton="Button6">
-                                <asp:TextBox ID="TextBox1" placeholder="Where do you want to park? Ex:: (Area, City, State)" class="jack2 jackbtn" Style="width: 52%; background-color: white; border-radius: 7px; padding: 12px;"
-                                    runat="server">
-                                </asp:TextBox>
-                                <asp:Button ID="Button6" runat="server" CssClass="marr"
-                                    Style="font-size: larger; width: 126px; color: white; border-radius: 7px; padding: 8px; background-color: #00d999; font-weight: bold;"
-                                    Text="Search" OnClientClick="return GeoCoordinate();" OnClick="Button6_Click"></asp:Button>
-                                <input id="start" name="start" type="hidden" type="text" placeholder="Start Destination" style="display: inline-block; width: 30%;">
-                                <input type="hidden" id="end" name="end" type="text" class="form-control search-input" placeholder="End Destination" style="display: inline-block; width: 30%;">
-                                <br />
-                                <asp:LinkButton ID="LinkButton4" runat="server" CssClass="butston button-default dklll emm" Style="margin: 1em; background: none; vertical-align: middle; position: relative; z-index: 1; width: 41%; float: none; font-size: 27px; color: white !important; background-color: rgba(0, 217, 153, 0.4);" Text="Rent Out Your Space">
-                                </asp:LinkButton>
-                            </asp:Panel>
+    <div style="background-color: #333; margin-top: 0px; margin-bottom: 10px; height: 100%;">
+        <div >
+              <marquee style="color:white">--Subscribe newsletter OR register your parking space before 28th June 2016 and win shoppers stop gift card.--</marquee>
+            <form method="post">
+                <div class="form-group" style="margin-top: 0px">
+                    <div class="row">
+                        <div class="col-md-9" style="margin-top: 5px;margin-bottom:2px">
+                        </div>
+                        <%--<div class="col-md-2" style="color: orange; font-weight: bold; font-size: large; margin-top: 5px;display:none"></div>
+                        <div class="col-md-3" style="margin-top: 5px;">
+                            <input type="text" placeholder="Email ID" class="form-control" id="subscribeemail"  data-validation-help="Please enter valid email id" data-validation="email" style="display:none">
+                        </div>
+                        <div class="col-md-2" style="margin-top: 5px;">
+                            <input type="text" placeholder="Mobile Number" class="form-control" id="subscribecontactnumber" data-validation-help="Please enter valid mobile number" data-validation-regexp="^([0-9]+)$" data-validation-length="10-10" style="display:none">
+                        </div>
+                        <div class="col-md-1" style="margin-top: 5px">
+                        </div>
+                        --%> <div class="col-md-2" style="margin-top: 5px;">
+                            <button  type="button" onclick="showModel()" class="btn btn-default" style="color: orange; background-color: white; font-weight: bold; font-size: medium">Subscribe Newsletter</button>
+                        </div>
+                        <div class="col-md-1" style="margin-top: 5px;margin-bottom:2px">
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-            <div id="loginFormID">
-                <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" CancelControlID="Button3" BackgroundCssClass="modalBackground" PopupControlID="Panel1" TargetControlID="LinkButton1">
-                </asp:ModalPopupExtender>
-
-                <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="center" Style="display: none">
-                    <asp:Button ID="Button3" runat="server" Text="X" CssClass="kaushik" />
-                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                        <ContentTemplate>
-                            <asp:Panel ID="Panel3" runat="server">
-                                <div class="txtwid" style="margin-top: 15px; width: 68%;">
-                                    <center>
-                                        <h2>Login Here</h2>
-                                    </center>
-                                    <asp:TextBox ID="txtusername" runat="server" CssClass="form-control" placeholder="Enter Email"></asp:TextBox>
-
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server"
-                                        ErrorMessage="Enter Registered Email Id" ControlToValidate="txtusername" Display="None"
-                                        ValidationGroup="dss"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server"
-                                        ControlToValidate="txtusername" Display="None" ErrorMessage="Enter Valid Email Id"
-                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                        ValidationGroup="dss"></asp:RegularExpressionValidator>
-                                    <br />
-                                    <asp:TextBox ID="txtpass" runat="server" CssClass="form-control" placeholder="Enter Password" TextMode="Password"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server"
-                                        ErrorMessage="Enter Password" ControlToValidate="txtpass" Display="None"
-                                        ValidationGroup="dss"></asp:RequiredFieldValidator>
-                                    <br />
-                                    <asp:ValidationSummary ID="ValidationSummary4" ValidationGroup="dss" runat="server" ShowMessageBox="True" ShowSummary="False" />
-                                    <asp:Button ID="Button1" runat="server" Text="Login" ValidationGroup="dss"
-                                        Style="color: white; background-color: #333;"
-                                        class="btn form-btn btn-lg btn-block" OnClick="Button2_Click" />
-                                    <br />
-                                    <asp:LinkButton OnClick="jack" ID="LinkButton3" runat="server">Forgot Password</asp:LinkButton>
-
-                                </div>
-                            </asp:Panel>
-                            <asp:Panel ID="Panel4" Visible="false" runat="server">
-                                <div style="margin-top: 15px; width: 68%;">
-                                    <center>
-                                        <h2>Recover Password</h2>
-                                    </center>
-
-                                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter Registered Email Id"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-                                        ErrorMessage="Enter Registered Email Id" ControlToValidate="TextBox2" Display="None"
-                                        ValidationGroup="ds"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                                        ControlToValidate="TextBox2" Display="None" ErrorMessage="Enter Valid Email Id"
-                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                        ValidationGroup="ds"></asp:RegularExpressionValidator>
-                                    <br />
-
-
-
-                                    <asp:Button ID="Button7" runat="server" Text="Recover" ValidationGroup="ds"
-                                        Style="color: white; background-color: #333;"
-                                        class="btn form-btn btn-lg btn-block" OnClick="Button7_Click" />
-                                    <asp:Button ID="Button8" runat="server" Text="Cancel"
-                                        Style="color: white; background-color: #333;"
-                                        class="btn form-btn btn-lg btn-block" OnClick="Button8_Click" />
-                                    <br />
-                                    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                                    <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="ds" runat="server" ShowMessageBox="True" ShowSummary="False" />
-                                </div>
-                            </asp:Panel>
-
-
-
-                            <asp:UpdateProgress ID="upprogpnl" runat="server" AssociatedUpdatePanelID="UpdatePanel2">
-                                <ProgressTemplate>
-
-                                    <div style="z-index: 10025; left: 45%; position: fixed; top: 40%">
-                                        <center>
-                                            <img id="imglddoader" runat="server" src="~/Gallery/loader.GIF" height="100" visible="True" width="100" />
-                                        </center>
-                                    </div>
-                                </ProgressTemplate>
-
-                            </asp:UpdateProgress>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                </asp:Panel>
-            </div>
-
+        </form>
+        </div>
+    <%--<marquee>--Site is under beta testing.-- --Register your parking space before 28th June 2016 and win shoppers stop gift card.--</marquee>--%>
+        <form id="form1" runat="server" style="margin-top: 0px;">
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
             <div>
-                <asp:ModalPopupExtender ID="ModalPopupExtender2" runat="server" CancelControlID="Button4" BackgroundCssClass="modalBackground" PopupControlID="Panel2" TargetControlID="LinkButton2">
-                </asp:ModalPopupExtender>
+
+                <a class="scrollToTop" href="#"><i class="fa fa-chevron-up" style="line-height: 50px;"></i></a>
+                <!-- END SCROLL TOP BUTTON -->
+
+                <!-- Start header section -->
+
+                <div class="header-inner">
+                    <!-- Header image -->
+                    <img src="assets/images/header-bg.jpg" class="imghh" alt="img">
+                    <div class="header-overlay">
+                        <div class="header-content">
+                            <!-- Start header content slider -->
+                            <h2 class="header-slide fontt">
+                                <img src="assets/images/Logo%20(1).png" />
+                                <span class="jack12" style="font-style: italic; font-family: monospace;">A Place To Find/Rent Parking Space.</span>
+                            </h2>
 
 
-                <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup1" align="center" Style="display: none; top: 86.5px;">
-                    <asp:Button ID="Button4" runat="server" Text="X" CssClass="kaushik" />
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
+                            <div class="header-btn-area" style="margin-top: 0px;">
 
-
-                            <div class="txtwid" style="margin-top: 15px; width: 68%;">
-
-                                <asp:Panel ID="Panel12" runat="server">
-                                    <center>
-                                        <h2 class="fonnt">Create Account Here</h2>
-                                    </center>
-                                    <asp:TextBox ID="txtname" runat="server" CssClass="form-control" placeholder="Full Name"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                        ErrorMessage="Enter Name" ControlToValidate="txtname" Display="None"
-                                        ValidationGroup="abcccc"></asp:RequiredFieldValidator>
-
+                                <asp:Panel ID="Panel14" runat="server" DefaultButton="Button6">
+                                    <asp:TextBox ID="TextBox1" placeholder="Where do you want to park? Ex:: (Area, City, State)" class="jack2 jackbtn" Style="width: 52%; background-color: white; border-radius: 7px; padding: 12px;"
+                                        runat="server">
+                                    </asp:TextBox>
+                                    <asp:Button ID="Button6" runat="server" CssClass="marr"
+                                        Style="font-size: larger; width: 126px; color: white; border-radius: 7px; padding: 8px; background-color: #00d999; font-weight: bold;"
+                                        Text="Search" OnClick="Button6_Click"></asp:Button>
+                                    <input id="start" name="start" type="hidden" type="text" placeholder="Start Destination" style="display: inline-block; width: 30%;">
+                                    <input type="hidden" id="end" name="end" type="text" class="form-control search-input" placeholder="End Destination" style="display: inline-block; width: 30%;">
                                     <br />
-                                    <asp:TextBox ID="txtmobile" runat="server" CssClass="form-control" placeholder="Mobile Number(Ex:9898xxx)"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                        ErrorMessage="Enter Mobile Number" ControlToValidate="txtmobile"
-                                        Display="None" ValidationGroup="abcccc"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                        ControlToValidate="txtmobile" Display="None"
-                                        ErrorMessage="Enter Valid Mobile Number"
-                                        ValidationExpression="^[0-9]{10}$"
-                                        ValidationGroup="abcccc"></asp:RegularExpressionValidator>
-                                    <br />
-                                    <asp:TextBox ID="txtemail" runat="server" CssClass="form-control" placeholder="Email id"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                                        ErrorMessage="Enter Email Id" ControlToValidate="txtemail" Display="None"
-                                        ValidationGroup="abcccc"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                                        ControlToValidate="txtemail" Display="None" ErrorMessage="Enter Valid Email Id"
-                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                        ValidationGroup="abcccc"></asp:RegularExpressionValidator>
-
-                                    <br />
-                                    <asp:TextBox ID="txtuserpass" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                                        ErrorMessage="Enter Password" ControlToValidate="txtuserpass"
-                                        ValidationGroup="abcccc" Display="None"></asp:RequiredFieldValidator>
-
-
-                                    <asp:RegularExpressionValidator ID="Regex2" Display="None" runat="server" ControlToValidate="txtuserpass"
-                                        ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,})$"
-                                        ErrorMessage="Password must be of minimum 6 characters and No Special Character" ValidationGroup="abcccc" ForeColor="Red" />
-
-
-
-
-                                    <br />
-                                    <asp:TextBox ID="txtcpass" runat="server" CssClass="form-control" TextMode="Password" placeholder="ConfirmPassword"></asp:TextBox>
-                                    <asp:CompareValidator ID="CompareValidator1" runat="server"
-                                        ControlToCompare="txtuserpass" ControlToValidate="txtcpass" Display="None"
-                                        ErrorMessage="Password Not Match" ValidationGroup="abcccc"></asp:CompareValidator>
-                                    <br />
-
-
-                                    <asp:Button ID="Button5" runat="server" Text="Register" ValidationGroup="abcccc"
-                                        Style="color: white; background-color: #333;"
-                                        class="btn form-btn btn-lg btn-block" OnClick="Button5_Click" />
-                                    <br />
-
-                                    <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="abcccc" runat="server" ShowMessageBox="True" ShowSummary="False" />
-
-
-                                </asp:Panel>
-                                <asp:Panel ID="Panel13" Visible="false" runat="server">
-
-                                    <center>
-                                        <h3 style="color: White" class="fonnt">Enter Verification Code</h3>
-                                    </center>
-                                    <asp:Label ID="lblfirstverification" Visible="false" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtfiratverification" runat="server" CssClass="form-control" placeholder="Enter OTP"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server"
-                                        ErrorMessage="Enter OTP" ControlToValidate="txtfiratverification" Display="None"
-                                        ValidationGroup="jacks"></asp:RequiredFieldValidator>
-                                    <br />
-
-
-                                    <asp:Button ID="Button16" runat="server" Text="Finish" ValidationGroup="jacks"
-                                        Style="color: white; background-color: #333;"
-                                        class="btn form-btn btn-lg btn-block" OnClick="Button5_Clickfirstverify" />
-                                    <asp:Button ID="Button17" runat="server" Text="Cancel"
-                                        Style="color: white; background-color: #333;"
-                                        class="btn form-btn btn-lg btn-block" OnClick="Button5_Clickfirstcancel" />
-                                    <br />
-
-                                    <asp:ValidationSummary ID="ValidationSummary9" ValidationGroup="jacks" runat="server" ShowMessageBox="True" ShowSummary="False" />
-
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CssClass="butston button-default dklll emm" Style="margin: 1em; background: none; vertical-align: middle; position: relative; z-index: 1; width: 41%; float: none; font-size: 27px; color: white !important; background-color: rgba(0, 217, 153, 0.4);" Text="Rent Out Your Space">
+                                    </asp:LinkButton>
                                 </asp:Panel>
                             </div>
-
-                            <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
-                                <ProgressTemplate>
-
-                                    <div style="z-index: 10025; left: 45%; position: fixed; top: 40%">
-                                        <center>
-                                            <img id="imglaaaddoader" runat="server" src="~/Gallery/loader.GIF" height="100" visible="True" width="100" />
-                                        </center>
-                                    </div>
-                                </ProgressTemplate>
-
-                            </asp:UpdateProgress>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                </asp:Panel>
-            </div>
-
-            <div>
-                <asp:ModalPopupExtender ID="ModalPopupExtender3" runat="server" CancelControlID="Button9" BackgroundCssClass="modalBackground" PopupControlID="Panel5" TargetControlID="LinkButton4">
-                </asp:ModalPopupExtender>
+                        </div>
+                    </div>
+                </div>
 
 
-                <asp:Panel ID="Panel5" runat="server" CssClass="modalPopup1" align="center" Style="display: none; top: 86.5px;">
-                    <asp:Button ID="Button9" runat="server" Text="X" CssClass="kaushik" />
-                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                        <ContentTemplate>
-                            <div style="color: white;">
-                                <asp:RadioButton ID="RadioButton1" Style="margin-left: -16px; padding-left: 7px;" GroupName="a" OnCheckedChanged="RadioButton1_CheckedChanged" AutoPostBack="true" runat="server" Text="I don't have an account" /><br />
+                <div id="loginFormID">
+                    <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" CancelControlID="Button3" BackgroundCssClass="modalBackground" PopupControlID="Panel1" TargetControlID="LinkButton1">
+                    </asp:ModalPopupExtender>
 
-                                <asp:RadioButton ID="RadioButton2" GroupName="a" AutoPostBack="true" Style="padding-left: 7px;" OnCheckedChanged="RadioButton2_CheckedChanged" runat="server" Text="I already have an account" />
-                            </div>
-
-                            <asp:Panel ID="Panel6" runat="server">
-                                <asp:Panel ID="Panel10" runat="server">
-
-                                    <div class="txtwid" style="margin-top: 15px; width: 68%;">
-                                        <center>
-                                            <h2 class="fonnt">Create Account Here</h2>
-                                        </center>
-
-                                        <asp:TextBox ID="txtname2" runat="server" CssClass="form-control" placeholder="Full Name"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server"
-                                            ErrorMessage="Enter Name" ControlToValidate="txtname2" Display="None"
-                                            ValidationGroup="abccccc"></asp:RequiredFieldValidator>
-
-                                        <br />
-                                        <asp:TextBox ID="txtmobile2" runat="server" CssClass="form-control" placeholder="Mobile Number(Ex:9898xxx)"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server"
-                                            ErrorMessage="Enter Mobile Number" ControlToValidate="txtmobile2"
-                                            Display="None" ValidationGroup="abccccc"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server"
-                                            ControlToValidate="txtmobile2" Display="None"
-                                            ErrorMessage="Enter Valid Mobile Number"
-                                            ValidationExpression="^[0-9]{10}$"
-                                            ValidationGroup="abccccc"></asp:RegularExpressionValidator>
-                                        <br />
-                                        <asp:TextBox ID="txtemail2" runat="server" CssClass="form-control" placeholder="Email id"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server"
-                                            ErrorMessage="Enter Email Id" ControlToValidate="txtemail2" Display="None"
-                                            ValidationGroup="abccccc"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server"
-                                            ControlToValidate="txtemail2" Display="None" ErrorMessage="Enter Valid Email Id"
-                                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                            ValidationGroup="abccccc"></asp:RegularExpressionValidator>
-
-                                        <br />
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator10" Display="None" Style="font-size: xx-small;" runat="server" ControlToValidate="txtuserpass22"
-                                            ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,})$"
-                                            ErrorMessage="Password must be of minimum 6 characters and No Special Character" ValidationGroup="abccccc" ForeColor="Red" />
-                                        <asp:TextBox ID="txtuserpass22" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server"
-                                            ErrorMessage="Enter Password" ControlToValidate="txtuserpass22"
-                                            ValidationGroup="abccccc" Display="None"></asp:RequiredFieldValidator>
-
-                                        <br />
-                                        <asp:TextBox ID="txtcpass2" runat="server" CssClass="form-control" TextMode="Password" placeholder="ConfirmPassword"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server"
-                                            ErrorMessage="Enter Confirm Password" ControlToValidate="txtcpass2"
-                                            ValidationGroup="abccccc" Display="None"></asp:RequiredFieldValidator>
-                                        <asp:CompareValidator ID="CompareValidator2" runat="server"
-                                            ControlToCompare="txtuserpass22" ControlToValidate="txtcpass2" Display="None"
-                                            ErrorMessage="Password Not Match" ValidationGroup="abccccc"></asp:CompareValidator>
-
-                                        <br />
-
-                                        <asp:Button ID="Button10" runat="server" Text="Register" ValidationGroup="abccccc"
-                                            Style="color: white; background-color: #333;"
-                                            class="btn form-btn btn-lg btn-block" OnClick="Button5_Click2" />
-
-                                        <asp:ValidationSummary ID="ValidationSummary5" ValidationGroup="abccccc" runat="server" ShowMessageBox="True" ShowSummary="False" />
-
-                                    </div>
-                                </asp:Panel>
-                                <asp:Panel ID="Panel11" Visible="false" runat="server">
-                                    <div class="txtwid" style="margin-top: 15px; width: 68%;">
-                                        <center>
-                                            <h3 style="color: White" class="fonnt">Enter Verification Code</h3>
-                                        </center>
-                                        <asp:Label ID="lbllotp" Visible="false" runat="server" Text=""></asp:Label>
-                                        <asp:TextBox ID="txtverification" runat="server" CssClass="form-control" placeholder="Enter OTP"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server"
-                                            ErrorMessage="Enter OTP" ControlToValidate="txtverification" Display="None"
-                                            ValidationGroup="jack"></asp:RequiredFieldValidator>
-                                        <br />
-
-
-                                        <asp:Button ID="Button14" runat="server" Text="Finish" ValidationGroup="jack"
-                                            Style="color: white; background-color: #333;"
-                                            class="btn form-btn btn-lg btn-block" OnClick="Button5_Click22" />
-                                        <asp:Button ID="Button15" runat="server" Text="Cancel"
-                                            Style="color: white; background-color: #333;"
-                                            class="btn form-btn btn-lg btn-block" OnClick="Button5_Click222" />
-                                        <br />
-
-                                        <asp:ValidationSummary ID="ValidationSummary8" ValidationGroup="jack" runat="server" ShowMessageBox="True" ShowSummary="False" />
-                                    </div>
-                                </asp:Panel>
-
-
-                            </asp:Panel>
-
-                            <asp:Panel ID="Panel7" Visible="false" runat="server">
-
-                                <asp:Panel ID="Panel8" runat="server">
+                    <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="center" Style="display: none">
+                        <asp:Button ID="Button3" runat="server" Text="X" CssClass="kaushik" />
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <asp:Panel ID="Panel3" runat="server">
                                     <div class="txtwid" style="margin-top: 15px; width: 68%;">
                                         <center>
                                             <h2>Login Here</h2>
                                         </center>
+                                        <asp:TextBox ID="txtusername" runat="server" CssClass="form-control" placeholder="Enter Email"></asp:TextBox>
 
-                                        <asp:TextBox ID="txtusername2" runat="server" CssClass="form-control" placeholder="Enter Email"></asp:TextBox>
-
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server"
-                                            ErrorMessage="Enter Registered Email Id" ControlToValidate="txtusername2" Display="None"
-                                            ValidationGroup="dsdds"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server"
-                                            ControlToValidate="txtusername2" Display="None" ErrorMessage="Enter Valid Email Id"
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server"
+                                            ErrorMessage="Enter Registered Email Id" ControlToValidate="txtusername" Display="None"
+                                            ValidationGroup="dss"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server"
+                                            ControlToValidate="txtusername" Display="None" ErrorMessage="Enter Valid Email Id"
                                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                            ValidationGroup="dsdds"></asp:RegularExpressionValidator>
+                                            ValidationGroup="dss"></asp:RegularExpressionValidator>
                                         <br />
-                                        <asp:TextBox ID="txtpass2" runat="server" CssClass="form-control" placeholder="Enter Password" TextMode="Password"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server"
-                                            ErrorMessage="Enter Password" ControlToValidate="txtpass2" Display="None"
-                                            ValidationGroup="dsdds"></asp:RequiredFieldValidator>
+                                        <asp:TextBox ID="txtpass" runat="server" CssClass="form-control" placeholder="Enter Password" TextMode="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server"
+                                            ErrorMessage="Enter Password" ControlToValidate="txtpass" Display="None"
+                                            ValidationGroup="dss"></asp:RequiredFieldValidator>
                                         <br />
-                                        <asp:ValidationSummary ID="ValidationSummary6" ValidationGroup="dsdds" runat="server" ShowMessageBox="True" ShowSummary="False" />
-                                        <asp:Button ID="Button11" runat="server" Text="Login" ValidationGroup="dsdds"
+                                        <asp:ValidationSummary ID="ValidationSummary4" ValidationGroup="dss" runat="server" ShowMessageBox="True" ShowSummary="False" />
+                                        <asp:Button ID="Button1" runat="server" Text="Login" ValidationGroup="dss"
                                             Style="color: white; background-color: #333;"
-                                            class="btn form-btn btn-lg btn-block" OnClick="Button2_Click2" />
+                                            class="btn form-btn btn-lg btn-block" OnClick="Button2_Click" />
                                         <br />
-                                        <asp:LinkButton OnClick="jack2" ID="LinkButton5" runat="server">Forgot Password</asp:LinkButton>
+                                        <asp:LinkButton OnClick="jack" ID="LinkButton3" runat="server">Forgot Password</asp:LinkButton>
+
                                     </div>
-
                                 </asp:Panel>
-
-                                <asp:Panel ID="Panel9" Visible="false" runat="server">
+                                <asp:Panel ID="Panel4" Visible="false" runat="server">
                                     <div style="margin-top: 15px; width: 68%;">
                                         <center>
                                             <h2>Recover Password</h2>
                                         </center>
 
-                                        <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="Enter Registered Email Id"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server"
-                                            ErrorMessage="Enter Registered Email Id" ControlToValidate="TextBox3" Display="None"
-                                            ValidationGroup="dssss"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server"
-                                            ControlToValidate="TextBox3" Display="None" ErrorMessage="Enter Valid Email Id"
+                                        <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter Registered Email Id"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                            ErrorMessage="Enter Registered Email Id" ControlToValidate="TextBox2" Display="None"
+                                            ValidationGroup="ds"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
+                                            ControlToValidate="TextBox2" Display="None" ErrorMessage="Enter Valid Email Id"
                                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                            ValidationGroup="dssss"></asp:RegularExpressionValidator>
+                                            ValidationGroup="ds"></asp:RegularExpressionValidator>
                                         <br />
 
 
 
-                                        <asp:Button ID="Button12" runat="server" Text="Recover" ValidationGroup="dssss"
+                                        <asp:Button ID="Button7" runat="server" Text="Recover" ValidationGroup="ds"
                                             Style="color: white; background-color: #333;"
-                                            class="btn form-btn btn-lg btn-block" OnClick="Button7_Click2" />
-                                        <asp:Button ID="Button13" runat="server" Text="Cancel"
+                                            class="btn form-btn btn-lg btn-block" OnClick="Button7_Click" />
+                                        <asp:Button ID="Button8" runat="server" Text="Cancel"
                                             Style="color: white; background-color: #333;"
-                                            class="btn form-btn btn-lg btn-block" OnClick="Button8_Click2" />
+                                            class="btn form-btn btn-lg btn-block" OnClick="Button8_Click" />
                                         <br />
-                                        <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
-                                        <asp:ValidationSummary ID="ValidationSummary7" ValidationGroup="dssss" runat="server" ShowMessageBox="True" ShowSummary="False" />
+                                        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                                        <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="ds" runat="server" ShowMessageBox="True" ShowSummary="False" />
                                     </div>
                                 </asp:Panel>
 
-                            </asp:Panel>
 
-                            <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel3">
-                                <ProgressTemplate>
 
-                                    <div style="z-index: 10025; left: 45%; position: fixed; top: 40%">
+                                <asp:UpdateProgress ID="upprogpnl" runat="server" AssociatedUpdatePanelID="UpdatePanel2">
+                                    <ProgressTemplate>
+
+                                        <div style="z-index: 10025; left: 45%; position: fixed; top: 40%">
+                                            <center>
+                                                <img id="imglddoader" runat="server" src="~/Gallery/loader.GIF" height="100" visible="True" width="100" />
+                                            </center>
+                                        </div>
+                                    </ProgressTemplate>
+
+                                </asp:UpdateProgress>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </asp:Panel>
+                </div>
+
+                <div>
+                    <asp:ModalPopupExtender ID="ModalPopupExtender2" runat="server" CancelControlID="Button4" BackgroundCssClass="modalBackground" PopupControlID="Panel2" TargetControlID="LinkButton2">
+                    </asp:ModalPopupExtender>
+
+
+                    <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup1" align="center" Style="display: none; top: 86.5px;">
+                        <asp:Button ID="Button4" runat="server" Text="X" CssClass="kaushik" />
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+
+
+                                <div class="txtwid" style="margin-top: 15px; width: 68%;">
+
+                                    <asp:Panel ID="Panel12" runat="server">
                                         <center>
-                                            <img id="imglddoadaaer" runat="server" src="~/Gallery/loader.GIF" height="100" visible="True" width="100" />
+                                            <h2 class="fonnt">Create Account Here</h2>
                                         </center>
-                                    </div>
-                                </ProgressTemplate>
+                                        <asp:TextBox ID="txtname" runat="server" CssClass="form-control" placeholder="Full Name"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                            ErrorMessage="Enter Name" ControlToValidate="txtname" Display="None"
+                                            ValidationGroup="abcccc"></asp:RequiredFieldValidator>
 
-                            </asp:UpdateProgress>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                </asp:Panel>
-            </div>
-            <!-- End header section -->
+                                        <br />
+                                        <asp:TextBox ID="txtmobile" runat="server" CssClass="form-control" placeholder="Mobile Number(Ex:9898xxx)"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                            ErrorMessage="Enter Mobile Number" ControlToValidate="txtmobile"
+                                            Display="None" ValidationGroup="abcccc"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                            ControlToValidate="txtmobile" Display="None"
+                                            ErrorMessage="Enter Valid Mobile Number"
+                                            ValidationExpression="^[0-9]{10}$"
+                                            ValidationGroup="abcccc"></asp:RegularExpressionValidator>
+                                        <br />
+                                        <asp:TextBox ID="txtemail" runat="server" CssClass="form-control" placeholder="Email id"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                            ErrorMessage="Enter Email Id" ControlToValidate="txtemail" Display="None"
+                                            ValidationGroup="abcccc"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                                            ControlToValidate="txtemail" Display="None" ErrorMessage="Enter Valid Email Id"
+                                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                            ValidationGroup="abcccc"></asp:RegularExpressionValidator>
 
-            <!-- Start menu section -->
-            <section id="menu-area">
+                                        <br />
+                                        <asp:TextBox ID="txtuserpass" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                            ErrorMessage="Enter Password" ControlToValidate="txtuserpass"
+                                            ValidationGroup="abcccc" Display="None"></asp:RequiredFieldValidator>
+
+                                        <br />
+                                        <asp:TextBox ID="txtcpass" runat="server" CssClass="form-control" TextMode="Password" placeholder="Confirm Password"></asp:TextBox>
+                                        <asp:CompareValidator ID="CompareValidator1" runat="server"
+                                            ControlToCompare="txtuserpass" ControlToValidate="txtcpass" Display="None"
+                                            ErrorMessage="Password Not Match" ValidationGroup="abcccc"></asp:CompareValidator>
+                                        <br />
+
+
+                                        <asp:Button ID="Button5" runat="server" Text="Register" ValidationGroup="abcccc"
+                                            Style="color: white; background-color: #333;"
+                                            class="btn form-btn btn-lg btn-block" OnClick="Button5_Click" />
+                                        <br />
+
+                                        <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="abcccc" runat="server" ShowMessageBox="True" ShowSummary="False" />
+
+
+                                    </asp:Panel>
+                                    <asp:Panel ID="Panel13" Visible="false" runat="server">
+
+                                        <center>
+                                            <h3 style="color: White" class="fonnt">Enter Verification Code</h3>
+                                        </center>
+                                        <asp:Label ID="lblfirstverification" Visible="false" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtfiratverification" runat="server" CssClass="form-control" placeholder="Enter OTP"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server"
+                                            ErrorMessage="Enter OTP" ControlToValidate="txtfiratverification" Display="None"
+                                            ValidationGroup="jacks"></asp:RequiredFieldValidator>
+                                        <br />
+
+
+                                        <asp:Button ID="Button16" runat="server" Text="Finish" ValidationGroup="jacks"
+                                            Style="color: white; background-color: #333;"
+                                            class="btn form-btn btn-lg btn-block" OnClick="Button5_Clickfirstverify" />
+                                        <asp:Button ID="Button17" runat="server" Text="Cancel"
+                                            Style="color: white; background-color: #333;"
+                                            class="btn form-btn btn-lg btn-block" OnClick="Button5_Clickfirstcancel" />
+                                        <br />
+
+                                        <asp:ValidationSummary ID="ValidationSummary9" ValidationGroup="jacks" runat="server" ShowMessageBox="True" ShowSummary="False" />
+
+                                    </asp:Panel>
+                                </div>
+
+                                <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                                    <ProgressTemplate>
+
+                                        <div style="z-index: 10025; left: 45%; position: fixed; top: 40%">
+                                            <center>
+                                                <img id="imglaaaddoader" runat="server" src="~/Gallery/loader.GIF" height="100" visible="True" width="100" />
+                                            </center>
+                                        </div>
+                                    </ProgressTemplate>
+
+                                </asp:UpdateProgress>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </asp:Panel>
+                </div>
+
+                <div>
+                    <asp:ModalPopupExtender ID="ModalPopupExtender3" runat="server" CancelControlID="Button9" BackgroundCssClass="modalBackground" PopupControlID="Panel5" TargetControlID="LinkButton4">
+                    </asp:ModalPopupExtender>
+
+
+                    <asp:Panel ID="Panel5" runat="server" CssClass="modalPopup1" align="center" Style="display: none; top: 86.5px;">
+                        <asp:Button ID="Button9" runat="server" Text="X" CssClass="kaushik" />
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
+                                <div style="color: white;">
+                                    <asp:RadioButton ID="RadioButton1" Style="margin-left: -16px; padding-left: 7px;" GroupName="a" OnCheckedChanged="RadioButton1_CheckedChanged" AutoPostBack="true" runat="server" Text="I don't have an account" /><br />
+
+                                    <asp:RadioButton ID="RadioButton2" GroupName="a" AutoPostBack="true" Style="padding-left: 7px;" OnCheckedChanged="RadioButton2_CheckedChanged" runat="server" Text="I already have an account" />
+                                </div>
+
+                                <asp:Panel ID="Panel6" runat="server">
+                                    <asp:Panel ID="Panel10" runat="server">
+
+                                        <div class="txtwid" style="margin-top: 15px; width: 68%;">
+                                            <center>
+                                                <h2 class="fonnt">Create Account Here</h2>
+                                            </center>
+
+                                            <asp:TextBox ID="txtname2" runat="server" CssClass="form-control" placeholder="Full Name"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server"
+                                                ErrorMessage="Enter Name" ControlToValidate="txtname2" Display="None"
+                                                ValidationGroup="abccccc"></asp:RequiredFieldValidator>
+
+                                            <br />
+                                            <asp:TextBox ID="txtmobile2" runat="server" CssClass="form-control" placeholder="Mobile Number(Ex:9898xxx)"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server"
+                                                ErrorMessage="Enter Mobile Number" ControlToValidate="txtmobile2"
+                                                Display="None" ValidationGroup="abccccc"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server"
+                                                ControlToValidate="txtmobile2" Display="None"
+                                                ErrorMessage="Enter Valid Mobile Number"
+                                                ValidationExpression="^[0-9]{10}$"
+                                                ValidationGroup="abccccc"></asp:RegularExpressionValidator>
+                                            <br />
+                                            <asp:TextBox ID="txtemail2" runat="server" CssClass="form-control" placeholder="Email id"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server"
+                                                ErrorMessage="Enter Email Id" ControlToValidate="txtemail2" Display="None"
+                                                ValidationGroup="abccccc"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server"
+                                                ControlToValidate="txtemail2" Display="None" ErrorMessage="Enter Valid Email Id"
+                                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                                ValidationGroup="abccccc"></asp:RegularExpressionValidator>
+
+                                            <br />
+                                           
+                                            <asp:TextBox ID="txtuserpass22" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server"
+                                                ErrorMessage="Enter Password" ControlToValidate="txtuserpass22"
+                                                ValidationGroup="abccccc" Display="None"></asp:RequiredFieldValidator>
+
+                                            <br />
+                                            <asp:TextBox ID="txtcpass2" runat="server" CssClass="form-control" TextMode="Password" placeholder="Confirm Password"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server"
+                                                ErrorMessage="Enter Confirm Password" ControlToValidate="txtcpass2"
+                                                ValidationGroup="abccccc" Display="None"></asp:RequiredFieldValidator>
+                                            <asp:CompareValidator ID="CompareValidator2" runat="server"
+                                                ControlToCompare="txtuserpass22" ControlToValidate="txtcpass2" Display="None"
+                                                ErrorMessage="Password Not Match" ValidationGroup="abccccc"></asp:CompareValidator>
+
+                                            <br />
+
+                                            <asp:Button ID="Button10" runat="server" Text="Register" ValidationGroup="abccccc"
+                                                Style="color: white; background-color: #333;"
+                                                class="btn form-btn btn-lg btn-block" OnClick="Button5_Click2" />
+
+                                            <asp:ValidationSummary ID="ValidationSummary5" ValidationGroup="abccccc" runat="server" ShowMessageBox="True" ShowSummary="False" />
+
+                                        </div>
+                                    </asp:Panel>
+                                    <asp:Panel ID="Panel11" Visible="false" runat="server">
+                                        <div class="txtwid" style="margin-top: 15px; width: 68%;">
+                                            <center>
+                                                <h3 style="color: White" class="fonnt">Enter Verification Code</h3>
+                                            </center>
+                                            <asp:Label ID="lbllotp" Visible="false" runat="server" Text=""></asp:Label>
+                                            <asp:TextBox ID="txtverification" runat="server" CssClass="form-control" placeholder="Enter OTP"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server"
+                                                ErrorMessage="Enter OTP" ControlToValidate="txtverification" Display="None"
+                                                ValidationGroup="jack"></asp:RequiredFieldValidator>
+                                            <br />
+
+
+                                            <asp:Button ID="Button14" runat="server" Text="Finish" ValidationGroup="jack"
+                                                Style="color: white; background-color: #333;"
+                                                class="btn form-btn btn-lg btn-block" OnClick="Button5_Click22" />
+                                            <asp:Button ID="Button15" runat="server" Text="Cancel"
+                                                Style="color: white; background-color: #333;"
+                                                class="btn form-btn btn-lg btn-block" OnClick="Button5_Click222" />
+                                            <br />
+
+                                            <asp:ValidationSummary ID="ValidationSummary8" ValidationGroup="jack" runat="server" ShowMessageBox="True" ShowSummary="False" />
+                                        </div>
+                                    </asp:Panel>
+
+
+                                </asp:Panel>
+
+                                <asp:Panel ID="Panel7" Visible="false" runat="server">
+
+                                    <asp:Panel ID="Panel8" runat="server">
+                                        <div class="txtwid" style="margin-top: 15px; width: 68%;">
+                                            <center>
+                                                <h2>Login Here</h2>
+                                            </center>
+
+                                            <asp:TextBox ID="txtusername2" runat="server" CssClass="form-control" placeholder="Enter Email"></asp:TextBox>
+
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server"
+                                                ErrorMessage="Enter Registered Email Id" ControlToValidate="txtusername2" Display="None"
+                                                ValidationGroup="dsdds"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server"
+                                                ControlToValidate="txtusername2" Display="None" ErrorMessage="Enter Valid Email Id"
+                                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                                ValidationGroup="dsdds"></asp:RegularExpressionValidator>
+                                            <br />
+                                            <asp:TextBox ID="txtpass2" runat="server" CssClass="form-control" placeholder="Enter Password" TextMode="Password"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server"
+                                                ErrorMessage="Enter Password" ControlToValidate="txtpass2" Display="None"
+                                                ValidationGroup="dsdds"></asp:RequiredFieldValidator>
+                                            <br />
+                                            <asp:ValidationSummary ID="ValidationSummary6" ValidationGroup="dsdds" runat="server" ShowMessageBox="True" ShowSummary="False" />
+                                            <asp:Button ID="Button11" runat="server" Text="Login" ValidationGroup="dsdds"
+                                                Style="color: white; background-color: #333;"
+                                                class="btn form-btn btn-lg btn-block" OnClick="Button2_Click2" />
+                                            <br />
+                                            <asp:LinkButton OnClick="jack2" ID="LinkButton5" runat="server">Forgot Password</asp:LinkButton>
+                                        </div>
+
+                                    </asp:Panel>
+
+                                    <asp:Panel ID="Panel9" Visible="false" runat="server">
+                                        <div style="margin-top: 15px; width: 68%;">
+                                            <center>
+                                                <h2>Recover Password</h2>
+                                            </center>
+
+                                            <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="Enter Registered Email Id"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server"
+                                                ErrorMessage="Enter Registered Email Id" ControlToValidate="TextBox3" Display="None"
+                                                ValidationGroup="dssss"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server"
+                                                ControlToValidate="TextBox3" Display="None" ErrorMessage="Enter Valid Email Id"
+                                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                                ValidationGroup="dssss"></asp:RegularExpressionValidator>
+                                            <br />
+
+
+
+                                            <asp:Button ID="Button12" runat="server" Text="Recover" ValidationGroup="dssss"
+                                                Style="color: white; background-color: #333;"
+                                                class="btn form-btn btn-lg btn-block" OnClick="Button7_Click2" />
+                                            <asp:Button ID="Button13" runat="server" Text="Cancel"
+                                                Style="color: white; background-color: #333;"
+                                                class="btn form-btn btn-lg btn-block" OnClick="Button8_Click2" />
+                                            <br />
+                                            <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+                                            <asp:ValidationSummary ID="ValidationSummary7" ValidationGroup="dssss" runat="server" ShowMessageBox="True" ShowSummary="False" />
+                                        </div>
+                                    </asp:Panel>
+
+                                </asp:Panel>
+
+                                <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel3">
+                                    <ProgressTemplate>
+
+                                        <div style="z-index: 10025; left: 45%; position: fixed; top: 40%">
+                                            <center>
+                                                <img id="imglddoadaaer" runat="server" src="~/Gallery/loader.GIF" height="100" visible="True" width="100" />
+                                            </center>
+                                        </div>
+                                    </ProgressTemplate>
+
+                                </asp:UpdateProgress>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </asp:Panel>
+                </div>
+                <!-- End header section -->
+
+                <!-- Start menu section -->
+                <section id="menu-area">
 	<nav class="navbar navbar-default main-navbar" role="navigation">  
 	  <div class="container">
 		<div class="navbar-header">
@@ -767,10 +763,10 @@
 	  </div>          
 	</nav> 
   </section>
-            <!-- End menu section -->
+                <!-- End menu section -->
 
-            <!-- Start about section -->
-            <section id="about">
+                <!-- Start about section -->
+                <section id="about">
 	<div class="container">
 	  <div class="row">
 		<div class="col-md-12">
@@ -893,14 +889,14 @@ We are a startup now and we are committed to solve the <span style="color: #00d9
 	  </div>
 	</div>
   </section>
-            <!-- End about section -->
+                <!-- End about section -->
 
 
 
 
 
-            <!-- Start service section -->
-            <section id="service">
+                <!-- Start service section -->
+                <section id="service">
 	<div class="container">
 	  <div class="row">
 		<div class="col-md-12">
@@ -975,7 +971,7 @@ We are a startup now and we are committed to solve the <span style="color: #00d9
 	  </div>
 	</div>
   </section>
-            <!-- End service section -->
+                <!-- End service section -->
 
 
 
@@ -983,8 +979,8 @@ We are a startup now and we are committed to solve the <span style="color: #00d9
 
 
 
-            <!-- Start Contact section -->
-            <section id="contact">
+                <!-- Start Contact section -->
+                <section id="contact">
 	<div class="container">
 	  <div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12">
@@ -1041,16 +1037,16 @@ Bengaluru,Karnataka 560078</p>
 	  </div>
 	</div>
   </section>
-            <!-- End Contact section -->
-            <!-- Start Google Map -->
-            <section id="google-map">
+                <!-- End Contact section -->
+                <!-- Start Google Map -->
+                <section id="google-map">
   
   <%--<iframe src="https://www.google.com/maps/d/embed?mid=zTD7RabWeJ00.kgWgroJRyaAc" width="100%" height="500"></iframe>--%>
 			 <iframe width="100%" height="500" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJFRxc2m8VrjsRwS8g4zWEdLo&key=AIzaSyCwbt61m8Mpefk04QjCIJEeQ8AWzpCIy8Y" allowfullscreen></iframe>  </section>
-            <!-- End Google Map -->
+                <!-- End Google Map -->
 
-            <!-- Start Footer -->
-            <footer id="footer">
+                <!-- Start Footer -->
+                <footer id="footer">
 	<div class="footer-top">
 	  <div class="container">
 		<div class="row">
@@ -1076,59 +1072,59 @@ Bengaluru,Karnataka 560078</p>
 	  <p>Developed by <a href="#" >Connected Skills</a></p>
 	</div>
   </footer>
-            <!-- End Footer -->
+                <!-- End Footer -->
 
 
-        </div>
-    </form>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalError" id="btnError" style="display: none">
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="myModalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalTitle" style="color: red; font-weight: bold;">title</h4>
-                </div>
-                <div class="modal-body" id="myModalMessage">
-                    message
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="saveBtn" style="display: none">Save changes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="closeBtn">Close</button>
+            </div>
+        </form>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalError" id="btnError" style="display: none">
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModalError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalTitle" style="color: red; font-weight: bold;">title</h4>
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        message
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="saveBtn" style="display: none">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeBtn">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalSuccess" id="btnSuccess" style="display: none">
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="myModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalTitle1" style="color: green; font-weight: bold;">title</h4>
-                </div>
-                <div class="modal-body" id="myModalMessage2">
-                    message
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="Button19" style="display: none">Save changes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="Button20">Close</button>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalSuccess" id="btnSuccess" style="display: none">
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalTitle1" style="color: green; font-weight: bold;">title</h4>
+                    </div>
+                    <div class="modal-body" id="myModalMessage2">
+                        message
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="Button19" style="display: none">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="Button20">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--START: Subscribe Modal Coding -->
-    <div id="subscribeModal" class="modal fade">
+        <!--START: Subscribe Modal Coding -->
+        <div id="subscribeModal" class="modal fade" >
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Newsletter</h4>
+                    <h4 class="modal-title" style="font-weight:bold;color:orange">Newsletter</h4>
                 </div>
                 <div class="modal-body">
                     <p>Subscribe and Stay tuned.</p>
@@ -1137,40 +1133,42 @@ Bengaluru,Karnataka 560078</p>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-envelope"></span>
                             </span>
-                                <input type="email" class="form-control" id="subscribe-email" placeholder="your@email.com" required="required" />
+                                <input type="email" class="form-control" id="subscribeemail" placeholder="your@email.com" required="required" />
                         </div>
                         <div class="input-group subscribe-form-input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-phone"></span>
                                 </span>
-                                <input type="text" class="form-control" id="subscribe-contactNumber" placeholder="999 9999 9999" required="required"/>
+                                <input type="text" class="form-control" id="subscribecontactnumber" placeholder="999 9999 9999" required="required"/>
                         </div>
-                        <button type="button" id="subscribe-btn" class="btn-sm btn-primary subscribe-form-input-group">Subscribe</button>
+                        <button type="button" id="subscribebtn1" class="btn-sm btn-primary subscribe-form-input-group" style="background:#00d999;font-weight:bold;border-color:white">Subscribe</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!--END: Subscribe Modal Coding -->
+        <!--END: Subscribe Modal Coding -->
 
-    <!-- initialize jQuery Library -->
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--%>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Bootstrap -->
+        <!-- initialize jQuery Library -->
+        <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--%>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <!-- Bootstrap -->
 
-    <!-- Slick Slider -->
-    <script type="text/javascript" src="assets/js/slick.js"></script>
-    <!-- Counter -->
-    <script type="text/javascript" src="assets/js/waypoints.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.counterup.js"></script>
-    <!-- mixit slider -->
-    <script type="text/javascript" src="assets/js/jquery.mixitup.js"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="assets/js/jquery.fancybox.pack.js"></script>
-    <!-- Wow animation -->
-    <script type="text/javascript" src="assets/js/wow.js"></script>
+        <!-- Slick Slider -->
+        <script type="text/javascript" src="assets/js/slick.js"></script>
+        <!-- Counter -->
+        <script type="text/javascript" src="assets/js/waypoints.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.counterup.js"></script>
+        <!-- mixit slider -->
+        <script type="text/javascript" src="assets/js/jquery.mixitup.js"></script>
+        <!-- Add fancyBox -->
+        <script type="text/javascript" src="assets/js/jquery.fancybox.pack.js"></script>
+        <!-- Wow animation -->
+        <script type="text/javascript" src="assets/js/wow.js"></script>
 
-    <!-- Custom js -->
-    <script type="text/javascript" src="assets/js/custom.js"></script>
+        <!-- Custom js -->
+        <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="assets/js/custom.js"></script>
+    </div>
 </body>
 </html>
